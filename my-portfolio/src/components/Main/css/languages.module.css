@@ -1,0 +1,13 @@
+.container h3, li {
+  color: var(--description-color);
+}
+.container {
+  max-width: 32rem;
+  height: clamp(10rem, 20vh, 30rem);
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: end;
+  padding: 0.5rem;
+}

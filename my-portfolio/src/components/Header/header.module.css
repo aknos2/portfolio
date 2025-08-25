@@ -1,0 +1,29 @@
+nav {
+  width: 100%;
+  height: 5rem;
+
+  display: flex;
+  align-items: center;
+  padding: 2rem 0;
+  padding-top: 1rem;
+  font-size: 1.3rem;
+  position: relative;
+  z-index: 10;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 3rem;
+  position: relative;
+  z-index: 1;
+}
+.container ul {
+  display: flex;
+  gap: 2rem;
+  color: var(--header-text-color);
+}
+.logo {
+  color: var(--header-text-color);
+}
