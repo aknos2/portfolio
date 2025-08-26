@@ -27,19 +27,57 @@
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(3.2px);
   -webkit-backdrop-filter: blur(3.2px);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   width: 100%;
   height: 26rem;
   padding: 1rem;
-  gap: 1rem;
   border-radius: 10px;
   border: none;
   position: relative;
   transform: translateZ(100px); /* closer */
+  box-shadow: inset 1px 3px 8px 2px rgba(242, 242, 242, 0.146);
+  
+}
+.contentWrap:hover {
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.104), rgba(238, 226, 226, 0.16));
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  transition: opacity 0.6s ease-in-out;
+}
+
+.content.sliding {
+  opacity: 0 ;
 }
 
 .description {
   padding: 0.5rem;
+}
+
+.previousArrow, .nextArrow {
+  position: absolute;
+  top: 50%;
+  background-color: transparent;
+  border: none;
+}
+.previousArrow {
+  left: 0;
+  transform: translate(-50%, -50%);
+  border-radius: 2px 0 0 2px;
+}
+.nextArrow {
+  right: 0;
+  transform: translate(50%, -50%);
+  border-radius: 0 2px 2px 0;
+}
+
+.previousArrow:hover, .nextArrow:hover {
+  background: rgba(255, 255, 255, 0.118);
+  border: 0.5px solid gray;
+}
+
+.contentWrap svg {
+  height: 50px;
 }

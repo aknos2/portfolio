@@ -3,9 +3,13 @@ import WaveContainer from "./WaveContainer";
 import Project from './Project';
 import Languages from './Languages';
 import { useState } from "react";
+import { projects } from "../../data/projects";
 
 function Main() {
   const [isProject, setIsProject] = useState(true);
+  const [currentProject, setCurrentProject] = useState(0);
+
+  const watchingProject = projects[currentProject];
 
   return (
     <div style={{ position: "relative" }}>
@@ -13,9 +17,9 @@ function Main() {
       {!isProject ? (
         <MyDescription/>
       ) : (
-        <Languages />
+        <Languages watchingProject={watchingProject}/>
       )}
-      <Project />
+      <Project currentProject={currentProject} setCurrentProject={setCurrentProject}/>
 
     </div>
   )

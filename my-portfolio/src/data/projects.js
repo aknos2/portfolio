@@ -1,3 +1,6 @@
+import doggoBlogHigh from '../assets/projects/doggo-high.png'
+import doggoBlogLow from '../assets/projects/doggo-low.png';
+
 export const projects = [ 
   {
     id: 1,
@@ -8,8 +11,8 @@ export const projects = [
     database: "PostgreSQL, Prisma",
     authentication: "Passport.js, JSON Web Token",
     img: {
-      high: "../../assets/projects/doggo-high.png",
-      low: "../../assets/projects/doggo-low.png"
+      high: doggoBlogHigh,
+      low: doggoBlogLow
     }
   },
    {
@@ -19,8 +22,8 @@ export const projects = [
     frontend: "Javascript, React",
     database: "Unplash API",
     img: {
-      high: "../../assets/projects/doggo-high.png",
-      low: "../../assets/projects/doggo-low.png"
+      high: doggoBlogHigh,
+      low: doggoBlogLow
     }
   },
   {
@@ -31,8 +34,8 @@ export const projects = [
     database: "PostgreSQL, Prisma",
     authentication: "Supabase, Multer, Passport.js",
     img: {
-      high: "../../assets/projects/doggo-high.png",
-      low: "../../assets/projects/doggo-low.png"
+      high: doggoBlogHigh,
+      low: doggoBlogLow
     }
   }
 ]
