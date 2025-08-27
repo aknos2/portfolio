@@ -2,12 +2,15 @@
   color: var(--description-color);
 }
 .container {
-  max-width: 32rem;
-  height: clamp(10rem, 20vh, 30rem);
-  font-size: 1.2rem;
+  position: absolute;
+  top: 85%;
+  width: clamp(10rem, 29vw, 40rem);
+  height: clamp(10rem, 30vh, 40rem);
+  font-size: clamp(1.2rem, 1.5vw, 3rem);
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   text-align: end;
   padding: 0.5rem;
+  margin-bottom: -10rem;
 }

@@ -1,0 +1,10 @@
+
+.project-background-title h1{
+  position: absolute;
+  top: 0;
+  right: clamp(10rem, 11rem, 20rem);
+  transform: translate(10rem, 1rem); /* further back */
+  filter: blur(1px);
+  font-size: clamp(5vw, 12vw, 15vw);
+  color: var(--description-color);
+}

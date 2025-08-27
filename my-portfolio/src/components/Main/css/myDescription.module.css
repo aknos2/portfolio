@@ -4,13 +4,12 @@
   padding: 2rem;
   background-color: rgba(240, 248, 255, 0.045);
   height: auto;
-  width: clamp(15rem, 90%, 45rem);
   margin-left: 1.5rem;
 }
 
 .container span {
   color: var(--description-color);
-  font-size: clamp(1.4rem, 2vw, 3.5rem);
+  font-size: clamp(0.8rem, 2vw, 3.5rem);
 }
 
 .typingEffect {

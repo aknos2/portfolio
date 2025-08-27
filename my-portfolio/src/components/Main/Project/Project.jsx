@@ -1,11 +1,26 @@
-import styles from './css/project.module.css';
+import styles from '../css/project.module.css';
 import { useState } from 'react';
-import { projects } from '../../data/projects';
+import { projects } from '../../../data/projects';
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
+import { useRef } from 'react';
 
 function Project({currentProject, setCurrentProject}) {
   const [isSliding, setIsSliding] = useState(false);
   const totalProjects = projects.length;
   const watchingProject = projects[currentProject];
+  const container = useRef();
+
+  useGSAP(() => {
+    if (!container.current) return;
+
+    gsap.from(container.current, {
+      opacity: 0,
+      duration: 1,
+      delay: 1.5,
+      ease: "power2.out"
+    })
+  }, []);
 
   const goToNextPage = () => {
     if (currentProject < totalProjects - 1) {
@@ -30,11 +45,13 @@ function Project({currentProject, setCurrentProject}) {
   return (
     <>
     <div className="backdrop">
-      <div className={styles.container}>
-        <h1>PROJECTS</h1>
-        <div className={`${styles.contentWrap}`}>
+      <div className={styles.container} ref={container}>
+    
+        <div className={styles.contentWrap}>
           <div className={`${styles.content} ${isSliding ? styles.sliding : ""}`}>
-            <h2>{watchingProject.title}</h2>
+            <div className={styles.title}>
+              <h2>{watchingProject.title}</h2>
+            </div>
             <div className={styles.imageWrap}>
               <img src={watchingProject.img.high} 
                   alt={watchingProject.title}

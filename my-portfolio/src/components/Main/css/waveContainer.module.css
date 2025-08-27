@@ -1,7 +1,7 @@
 .container {
   position: relative;
   width: 100%;
-  height: clamp(20rem, 20vh, 30rem);
+  height: clamp(30vh, 60vh, 70rem);
   overflow: hidden;
 }
 

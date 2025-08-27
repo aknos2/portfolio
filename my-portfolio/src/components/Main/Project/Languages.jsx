@@ -1,4 +1,4 @@
-import styles from './css/languages.module.css'
+import styles from '../css/languages.module.css'
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { SplitText } from "gsap/SplitText";
@@ -6,7 +6,7 @@ import { useRef } from 'react';
 
 gsap.registerPlugin(useGSAP, SplitText);
 
-const Nested = ({ watchingProject }) => {
+const Nested = ({ watchingProject, title }) => {
   const list = useRef();
 
   // Gather technologies, filter out falsy values
@@ -27,7 +27,7 @@ const Nested = ({ watchingProject }) => {
       opacity: 0,
       y: 20,
       stagger: 0.1,
-      duration: 0.6,
+      duration: 2,
       ease: "power2.out",
       onComplete: () => split.revert()
     });
@@ -35,7 +35,8 @@ const Nested = ({ watchingProject }) => {
   }, { dependencies: [watchingProject.id] });
 
   return (
-    <div className={styles.splitText}>
+    <div className={styles.splitText} ref={title}>
+      <h3>Built with</h3>
       <ul ref={list}>
         {technologies.map((tech, index) => (
           <li key={`${watchingProject.id}-${index}`}>
@@ -47,11 +48,10 @@ const Nested = ({ watchingProject }) => {
   );
 }
 
-function Languages({ watchingProject }) {
+function Languages({ watchingProject, title }) {
   return (
     <div className={styles.container}>
-      <h3>Built with</h3>
-      <Nested watchingProject={watchingProject}/>
+      <Nested watchingProject={watchingProject} title={title}/>
     </div>
   )
 }

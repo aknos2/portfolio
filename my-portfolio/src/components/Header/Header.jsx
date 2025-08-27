@@ -1,6 +1,6 @@
 import styles from './header.module.css'
 
-function Header() {
+function Header({handleProjects}) {
   return (
     <nav>
       <div className={styles.container}>
@@ -8,7 +8,7 @@ function Header() {
           aknos2
         </div>
         <ul>
-          <li>projects</li>
+          <li><button onClick={handleProjects}>projects</button></li>
           <li>about</li>
         </ul> 
       </div>
