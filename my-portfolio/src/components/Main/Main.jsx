@@ -1,6 +1,6 @@
 import './css/main.css';
 import MyDescription from "./MyDescription";
-import WaveContainer from "./WaveContainer";
+import WaveContainer from "./MyName";
 import Project from './Project/Project';
 import Languages from './Project/Languages';
 import { useState } from "react";

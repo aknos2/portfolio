@@ -29,6 +29,9 @@ nav button {
   gap: 2rem;
   color: var(--header-text-color);
 }
+.navLinks {
+  color: var(--header-text-color);
+}
 .logo {
   color: var(--header-text-color);
 }

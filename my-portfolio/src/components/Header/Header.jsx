@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styles from './header.module.css'
 
 function Header({handleProjects}) {
@@ -5,11 +6,11 @@ function Header({handleProjects}) {
     <nav>
       <div className={styles.container}>
         <div className={styles.logo}>
-          aknos2
+          <Link to="/" className={styles.navLinks}>aknos2</Link>
         </div>
         <ul>
           <li><button onClick={handleProjects}>projects</button></li>
-          <li>about</li>
+          <li><Link to="about" className={styles.navLinks}>about</Link></li>
         </ul> 
       </div>
     </nav>
