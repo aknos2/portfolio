@@ -1,6 +1,6 @@
 import './css/main.css';
 import MyDescription from "./MyDescription";
-import WaveContainer from "./MyName";
+import WaveContainer from "./WaveContainer";
 import Project from './Project/Project';
 import Languages from './Project/Languages';
 import { useState } from "react";
@@ -32,7 +32,7 @@ const ProjectNest = ({isProject, watchingProject, setCurrentProject, currentProj
       delay: 1.5,
       ease: "power2.out"
     })
-  },  { dependencies: isProject });
+  },  { dependencies: [isProject] });
 
   return (
         <>

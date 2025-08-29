@@ -29,7 +29,7 @@ export const projects = [
   {
     id: 3,
     title: "File Uploader",
-    description: "Website which allows you to upload and download files or music if you create an account.",
+    description: "Node.js + Supabase project for storing, organizing, and retrieving files/folders with real-time database integration",
     frontend: "Javascript, React",
     database: "PostgreSQL, Prisma",
     authentication: "Supabase, Multer, Passport.js",
