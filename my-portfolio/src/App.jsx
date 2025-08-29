@@ -5,17 +5,24 @@ import ShapeDivider from './components/ShapeDivider';
 import './styles/root.css';
 import { gsap } from "gsap";
 import { useGSAP } from '@gsap/react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 function App() {
-  const [isProject, setIsProject] = useState(false);
   const [clickDisabled, setClickDisabled] = useState(false);
   const dividerRef = useRef();
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const isProject = location.pathname === "/projects";
 
   const handleProjects = () => {
     if (clickDisabled) return;
 
-    setClickDisabled(true);
-    setIsProject(prev => !prev);
+    if (isProject) {
+      navigate('/');
+    } else {
+      navigate('/projects');
+    }
 
     setTimeout(() => setClickDisabled(false), 2000);
   };
