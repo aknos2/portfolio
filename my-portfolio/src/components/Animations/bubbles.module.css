@@ -1,0 +1,30 @@
+.containter {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none; /*allow clicks through*/
+}
+
+.bubble {
+  --neon-color: rgb(244, 244, 245);
+  position: absolute;
+
+  bottom: -60px;
+  border-radius: 50%;
+  animation: rise linear forwards;
+  filter: blur(1px);
+}
+
+@keyframes rise {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-120vh);
+    opacity: 0;
+  }
+} 

@@ -23,6 +23,7 @@
 
 .imgWrap {
   width: clamp(20rem, 40vw, 40rem); 
+  height: auto;
   align-self: flex-end;
   margin-left: auto;
   clip-path: polygon(50% 0, 100% 0, 100% 100%, 0% 100%);

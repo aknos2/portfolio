@@ -14,3 +14,31 @@
   object-fit:fill;
   z-index: -1;
 }
+
+.bubbleContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40vh;
+}
+
+/* .bubble {
+  --neon-color: rgb(203, 190, 103);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+
+  width: 20px;
+  height: 20px;
+  filter: brightness(120%);
+  background: rgba(250, 250, 250, 0.531);
+  border-radius: 50%;
+  filter: blur(1px);
+  box-shadow: 
+    0 0 25px var(--neon-color), /* Innermost glow, tight to the element */
+    /* 0 0 28px var(--neon-color),
+    0 0 30px var(--neon-color),
+    0 0 40px var(--neon-color), /* Outermost glow, more diffused */
+    /* 0 0 50px var(--neon-color); Even more diffused for a wider aura 
+}*/ 

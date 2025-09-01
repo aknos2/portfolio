@@ -2,10 +2,9 @@ import Header from '../Header/Header';
 import styles from './about.module.css';
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import { SplitText } from "gsap/SplitText";
 import profileImg from '../../assets/profile-image.JPG';
-import { useLocation, useNavigate } from 'react-router-dom';
 
 const AboutNest = () => {
   const title = useRef();
@@ -34,23 +33,8 @@ const AboutNest = () => {
 }
 
 function About() {
-  const location = useLocation();
-  const navigate = useNavigate();
-  const [clickDisabled, setClickDisabled] = useState(false);
-
-  
-  const isProject = location.pathname === '/projects';
-
-  const handleProjects = () => {
-    if (clickDisabled) return;
-    setClickDisabled(true);
-    navigate('/projects');
-    setTimeout(() => setClickDisabled(false), 2000);
-  };
-  
   return (
     <>
-      <Header isProject={isProject} handleProjects={handleProjects} />
       <AboutNest />
         <div className={styles.contentWrap}>
           {/* <div className={styles.description}>

@@ -5,6 +5,7 @@ import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { Flip } from "gsap/Flip";
 import { useRef } from "react";
+import Bubbles from '../Animations/Bubbles';
 
 gsap.registerPlugin(useGSAP, Flip);
 
@@ -136,6 +137,11 @@ function WaveContainer({ isProject }) {
 
       <div className={wave.content}>
         <MyName slots={myNameSlots} />
+      </div>
+
+      <div className={wave.bubbleContainer}>
+        <Bubbles isProject={isProject}/>
+        <div className={wave.bubble}></div>
       </div>
 
       {/* Render the real nodes */}
