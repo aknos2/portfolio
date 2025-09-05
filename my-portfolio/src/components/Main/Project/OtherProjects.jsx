@@ -21,12 +21,60 @@ const GithubIcon = () => {
 }
 
 function OtherProjects() {
+  const containerRef = useRef();
+  const titleRef = useRef();
+  const textRef = useRef();
+  const languagesRef = useRef();
+  const imageRef = useRef();
+  const titleBanner = useRef();
 
+  useGSAP(() => {
+    const textSplit = new SplitText(textRef.current, {
+      type: "lines"
+    });
+    // const textSplit = SplitText.create('p', { type: 'words'});
+    const languageSplit  = SplitText.create(languagesRef.current, { type: 'words'});
+
+    const timeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top 60%", 
+      },
+      onComplete: () => {
+        textSplit.revert();
+        languageSplit.revert();
+      },
+    });
+
+    timeline.from(imageRef.current, {
+      opacity: 0,
+      duration: 2,
+      ease: "power2.out",
+    });
+    timeline.fromTo(titleBanner.current, {
+      opacity: 0}, {opacity: 1, duration: 2, ease: "power1.out"}, "-=2");
+    timeline.fromTo(titleRef.current, {
+      x: 100, opacity: 0}, {x: 0, duration: 2, opacity: 1, ease: "power2.out"}, "-=1");
+    timeline.from(textSplit.lines, {
+      opacity: 0,
+      x: 100,
+      stagger: 0.2,
+      duration: 2,
+      ease: "power1.out",
+    }, '-=1.5');
+    timeline.from(languageSplit.words, {
+      opacity: 0,
+      x: 50,
+      stagger: 0.1,
+      duration: 2,
+      ease: "power2.out",
+    }, '-=1.5');
+  }, []);
 
   return (
     <section>
-      <div className={styles.container} >
-          <div className={styles.imageWrap}>
+      <div className={styles.container} ref={containerRef}>
+          <div className={styles.imageWrap} ref={imageRef}>
                 <img src={memoryCardHigh} 
                     srcSet={`${memoryCardLow} 480w, ${memoryCardHigh} 1080w`}
                     sizes="(max-width: 600px) 480px, 1080px"
@@ -39,13 +87,13 @@ function OtherProjects() {
           </div>
 
           <div className={styles.description}>
-              <div className={styles.titleDescriptionWrap}>
-                <h2>Memory card game</h2>
-                <p>Card game which you have to choose if the randomly generated cat photo alredy appeared or not</p>
+              <div className={styles.titleDescriptionWrap} ref={titleBanner}>
+                <h2 ref={titleRef}>Memory card game</h2>
+                <p ref={textRef}>Card game which you have to choose if the randomly generated cat photo alredy appeared or not</p>
               </div>
 
 
-            <div className={`${styles.languages} ${styles.rightSide}`}>
+            <div className={`${styles.languages} ${styles.rightSide}`} ref={languagesRef}>
               <h3>Built with</h3>
               <ul className={styles.rightSideUl}>
                 <li>Unplash API</li>

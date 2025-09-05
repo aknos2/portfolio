@@ -55,7 +55,7 @@
   text-align: center;
   background: linear-gradient(to bottom, #ffffff, #d4cc33);
   background-clip: text;
-  color: transparent;
+  /* color: transparent; */
   -webkit-background-clip: text;
 }
 
