@@ -1,3 +1,13 @@
+.backgroundTitle h1{
+  position: absolute;
+  top: 0;
+  right: clamp(10rem, 11rem, 20rem);
+  transform: translate(10rem, 1rem); /* further back */
+  filter: blur(1px);
+  font-size: clamp(5vw, 12vw, 15vw);
+  color: var(--description-color);
+}
+
 .contentWrap h3 {
   color: var(--description-color);
   font-size: clamp(2rem, 3.5vw, 4rem);
@@ -19,10 +29,11 @@
   height: 80vh;
   background-color: rgba(240, 248, 255, 0.119);
   padding: 0 2rem;
+  position: relative;
 }
 
 .imgWrap {
-  width: clamp(20rem, 40vw, 40rem); 
+  width: clamp(16rem, 40vw, 40rem); 
   height: auto;
   align-self: flex-end;
   margin-left: auto;
@@ -54,7 +65,7 @@
 
 .skillCategory {
   color: var(--description-color);
-  font-size: clamp(1rem, 2vw, 2rem);
+  font-size: clamp(0.8rem, 2vw, 2rem);
 }
 .skillCategory span::before{
   content: "-";
@@ -80,3 +91,17 @@
   transform: translate(-20%, 0%);
 }
 
+@media (max-width: 764px) {
+  .backgroundTitle h1{
+    position: absolute;
+    top: 0;
+    transform: translate(10rem, 5rem); /* further back */
+    filter: blur(1px);
+    font-size: clamp(5vw, 12vw, 15vw);
+    color: var(--description-color);
+  }
+  .imgWrap {
+    position: absolute;
+    right: 0;
+  }
+}

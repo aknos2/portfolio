@@ -1,5 +1,10 @@
 import doggoBlogHigh from '../assets/projects/doggo-high.png'
 import doggoBlogLow from '../assets/projects/doggo-low.png';
+import memoryCardHigh from '../assets/projects/memoryCard-high.webp';
+import memoryCardLow from '../assets/projects/memoryCard-low.webp';
+import fileUploaderHigh from '../assets/projects/fileuploader-high.png'
+import fileUploaderLow from '../assets/projects/fileuploader-low.png'
+
 
 export const projects = [ 
   {
@@ -10,6 +15,8 @@ export const projects = [
     backend: "Node.js, Express",
     database: "PostgreSQL, Prisma",
     authentication: "Passport.js, JSON Web Token",
+    github: "https://github.com/aknos2/blogAPI",
+    url: "https://doggo-blog.vercel.app/",
     img: {
       high: doggoBlogHigh,
       low: doggoBlogLow
@@ -21,9 +28,11 @@ export const projects = [
     description: "Card game which you have to choose if the randomly generated cat photo alredy appeared or not.",
     frontend: "Javascript, React",
     database: "Unplash API",
+    github: "https://github.com/aknos2/memory-card",
+    url: "https://github.com/aknos2/memory-card",
     img: {
-      high: doggoBlogHigh,
-      low: doggoBlogLow
+      high: memoryCardHigh,
+      low: memoryCardLow
     }
   },
   {
@@ -33,9 +42,25 @@ export const projects = [
     frontend: "Javascript, React",
     database: "PostgreSQL, Prisma",
     authentication: "Supabase, Multer, Passport.js",
+    github: "https://github.com/aknos2/file-uploader",
+    url:"https://file-uploader-hyhw.onrender.com/",
     img: {
-      high: doggoBlogHigh,
-      low: doggoBlogLow
+      high: fileUploaderHigh,
+      low: fileUploaderLow
+    }
+  },
+  {
+    id: 4,
+    title: "Weather app",
+    description: "World weather app using API and JS promises. It has day and night background wallpaper cycle.",
+    frontend: "Javascript, React",
+    database: "PostgreSQL, Prisma",
+    authentication: "Supabase, Multer, Passport.js",
+    github: "https://github.com/aknos2/weather-app",
+    url:"https://aknos2.github.io/weather-app/",
+    img: {
+      high: fileUploaderHigh,
+      low: fileUploaderLow
     }
   }
 ]

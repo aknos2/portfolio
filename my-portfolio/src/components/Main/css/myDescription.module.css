@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   padding: 2rem;
-  background-color: rgba(240, 248, 255, 0.045);
+
   height: auto;
   margin-left: 1.5rem;
 }
@@ -23,9 +23,54 @@
   transform: translatey(-6px);
   display: inline-block;
   transition: opacity 1s ease-in-out, transform 1s ease;
+  position: relative;
 }
 
 .letterVisible {
   opacity: 1;
   transform: translateY(0);
+}
+
+.sparkle {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  font-size: 0.5em;
+  pointer-events: none;
+  z-index: 10;
+  opacity: 0;
+  transform-origin: center;
+  
+  /* Disney-like sparkle effects */
+  filter: drop-shadow(0 0 3px rgba(255, 217, 0, 0.399)) 
+          drop-shadow(0 0 6px rgba(255, 255, 255, 0.6));
+  
+  filter: blur(10px);
+}
+
+.sparkle::before {
+  content: '✦';
+  position: absolute;
+  top: -3px;
+  left: 3px;
+  font-size: 0.8em;
+  color: #fbeb92bd;
+  opacity: 0.5;
+  animation: twinkle 2s infinite;
+}
+
+.sparkle::after {
+  content: '⋆';
+  position: absolute;
+  top: 2px;
+  left: -2px;
+  font-size: 0.5em;
+    opacity: 0.5;
+  color: #ffffffad;
+  animation: twinkle 2s infinite 0.5s;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0; transform: scale(0.5) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1) rotate(180deg); }
 }

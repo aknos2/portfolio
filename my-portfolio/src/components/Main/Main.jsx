@@ -9,6 +9,7 @@ import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { SplitText } from "gsap/SplitText";
 import { useRef } from 'react';
+import OtherProjects from './Project/OtherProjects';
 
 const ProjectNest = ({isProject, watchingProject, setCurrentProject, currentProject}) => {
   const text = useRef();
@@ -32,7 +33,7 @@ const ProjectNest = ({isProject, watchingProject, setCurrentProject, currentProj
       delay: 1.5,
       ease: "power2.out"
     })
-  },  { dependencies: [isProject] });
+  },  [isProject]);
 
   return (
         <>
@@ -51,12 +52,16 @@ function Main({ isProject }) {
   const watchingProject = projects[currentProject];
 
   return (
-    <div style={{ position: "relative" }}>
+    <div className="project-container" style={{ position: "relative" }}>
       <WaveContainer isProject={isProject}/>
       {!isProject ? (
         <MyDescription/>
       ) : (
-       <ProjectNest isProject={isProject} watchingProject={watchingProject} setCurrentProject={setCurrentProject} currentProject={currentProject}/>
+        <>
+        <ProjectNest isProject={isProject} watchingProject={watchingProject} setCurrentProject={setCurrentProject} currentProject={currentProject}/>
+        <div className="partial-space"></div>
+        <OtherProjects />
+        </>
       )}
 
     </div>

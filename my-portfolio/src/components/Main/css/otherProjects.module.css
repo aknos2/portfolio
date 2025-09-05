@@ -1,0 +1,127 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  position: relative;
+  font-size: clamp(1.3rem, 2vw, 2rem);
+  padding: 1rem;
+}
+
+.imageWrap {
+  width: clamp(24rem, 35vw, 40rem);
+  padding: 2rem 0;
+  justify-self: end;
+  flex: 0.9;
+  position: relative;
+  z-index: 2;
+
+}
+.imageWrap img {
+  width: clamp(18rem, 35vw, 50rem);
+  height: auto;
+  margin-left: auto;
+}
+
+.description h2, .description p, .description h3 {
+  color: var(--description-color);
+}
+.description p{
+  width: clamp(1rem, 30ch, 40ch);
+}
+.description {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem;
+  position: relative;
+  z-index: 1;
+  width: clamp(20rem, 45vw, 60rem);
+}
+
+.titleDescriptionWrap {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 1rem;
+  z-index: 10;
+  position: relative;
+  z-index: 0;
+}
+.titleDescriptionWrap h2{
+  text-align: center;
+  background: linear-gradient(to bottom, #ffffff, #d4cc33);
+  background-clip: text;
+  color: transparent;
+  -webkit-background-clip: text;
+}
+
+.titleDescriptionWrap::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: clamp(100vw, 130vw, 250vw);
+  height: 110%;
+  background: rgba(243, 242, 235, 0.205);
+  transform: translateX(-50%);
+  z-index: -1;       
+}
+
+.languages {
+  display: flex;
+  flex-direction: column;
+  align-self: end;
+  width: clamp(30vw, 40vw, 25rem);
+  font-size: clamp(1rem, 2vw, 2rem);;
+  margin-top: auto;
+  transform: translateY(-50%);
+}
+.languages.rightSide {
+  text-align: end;
+}
+.rightSideUl li:after {
+  content: "-";
+  margin-left: 0.5rem;
+}
+
+.leftSideUl li::before{
+  content: "-";
+  margin-right: 0.5rem;
+}
+
+.links a {
+  color: aliceblue;
+}
+.links {
+  display: flex;
+  justify-content: end;
+  gap: 2rem;
+  margin-top: 2rem;
+  width: 100%;
+}
+.link {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.github {
+  width: clamp(2rem, 4vw, 3rem);    
+  fill: whitesmoke;
+  transform: translateY(-20%);
+}
+
+@media (max-width: 764px) {
+  .imageWrap {
+    flex: 1;
+  }
+  .imageWrap img {
+    margin: 0 auto;
+  }
+  .links {
+    justify-content: center;
+  }
+}

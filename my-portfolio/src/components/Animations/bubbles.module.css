@@ -1,9 +1,9 @@
 .containter {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   overflow: hidden;
   pointer-events: none; /*allow clicks through*/
 }
@@ -13,9 +13,11 @@
   position: absolute;
 
   bottom: -60px;
+
   border-radius: 50%;
   animation: rise linear forwards;
   filter: blur(1px);
+
 }
 
 @keyframes rise {

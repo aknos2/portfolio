@@ -8,3 +8,30 @@
   font-size: clamp(5vw, 12vw, 15vw);
   color: var(--description-color);
 }
+
+.project-wrap {
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translate(-70%, 0%);
+  display: flex;
+  justify-content: center;
+}
+
+.partial-space {
+  display: inline-block;
+  height: 31rem;
+  padding: 0;
+  margin: 0;
+}
+
+@media (max-width:764px) {
+  .project-wrap {
+    top: 3%;
+    flex-direction: column-reverse;
+    justify-content: center;
+    width: 20rem;
+    transform: translate(-55%, 0%);
+    gap: 0.5rem
+  }
+}

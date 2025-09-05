@@ -19,7 +19,6 @@ const MyName = ({ slots }) => {
         <div className={styles.profileFirstName} ref={slots.firstName}></div>
         <div className={styles.profileLastName} ref={slots.lastName}></div>
 
-        {/* Always render these elements, control visibility with CSS/GSAP */}
         <div className={styles.profileTitle} ref={titleRef}>
           <p className="box">Web Developer</p>
         </div>
@@ -116,6 +115,8 @@ function WaveContainer({ isProject }) {
           stagger: 0.5
         })
       });
+
+
     }
 
   }, { dependencies: [isProject] });

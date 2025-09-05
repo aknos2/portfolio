@@ -4,11 +4,10 @@ nav {
   display: flex;
   align-items: center;
   padding: 2rem 0;
-  padding-top: 1rem;
   font-size: clamp(1rem, 2vw, 3vw);
-  position: relative;
-  z-index: 10;
-
+  position: fixed;
+  inset: 0;
+  z-index: 99;
 }
 
 nav button {
@@ -21,7 +20,6 @@ nav button {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  margin: 0 3rem;
   position: relative;
   z-index: 1;
 }
@@ -29,10 +27,24 @@ nav button {
   display: flex;
   gap: 2rem;
   color: var(--header-text-color);
+  margin-right: 3rem;
+}
+.logo {
+  margin-left: 3rem;
 }
 .navLinks {
   color: var(--header-text-color);
 }
-.logo {
-  color: var(--header-text-color);
+.github {
+  display: flex;
+  gap: clamp(0.5rem, 1vw, 1rem);
+  align-items: center;
+}
+.github svg{
+  fill: white !important;
+  width: clamp(1rem, 3vw, 3rem);
+}
+
+.shapeDivider {
+  background-color: transparent !important;
 }
