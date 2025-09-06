@@ -26,8 +26,10 @@ export const projects = [
     id: 2,
     title: "Memory Card Game",
     description: "Card game which you have to choose if the randomly generated cat photo alredy appeared or not.",
-    frontend: "Javascript, React",
-    database: "Unplash API",
+    languages: [
+      "Javascript, React",
+      "Unplash API",
+    ],
     github: "https://github.com/aknos2/memory-card",
     url: "https://github.com/aknos2/memory-card",
     img: {

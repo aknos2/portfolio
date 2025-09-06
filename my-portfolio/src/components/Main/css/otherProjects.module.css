@@ -9,6 +9,10 @@
   padding: 1rem;
 }
 
+.invertSideContainer {
+  flex-direction: row-reverse;
+}
+
 .imageWrap {
   width: clamp(24rem, 35vw, 40rem);
   padding: 2rem 0;
@@ -22,6 +26,11 @@
   width: clamp(18rem, 35vw, 50rem);
   height: auto;
   margin-left: auto;
+}
+
+.invertImg {
+  margin: 0 !important;
+  margin-right: auto;
 }
 
 .description h2, .description p, .description h3 {
@@ -83,15 +92,6 @@
 .languages.rightSide {
   text-align: end;
 }
-.rightSideUl li:after {
-  content: "-";
-  margin-left: 0.5rem;
-}
-
-.leftSideUl li::before{
-  content: "-";
-  margin-right: 0.5rem;
-}
 
 .links a {
   color: aliceblue;
@@ -99,9 +99,12 @@
 .links {
   display: flex;
   justify-content: end;
-  gap: 2rem;
-  margin-top: 2rem;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
   width: 100%;
+}
+.invertLinks {
+  justify-content: start;
 }
 .link {
   display: flex;
@@ -112,6 +115,12 @@
   width: clamp(2rem, 4vw, 3rem);    
   fill: whitesmoke;
   transform: translateY(-20%);
+}
+
+.newTab {
+  width: clamp(2rem, 4vw, 3rem);    
+  fill: whitesmoke;
+  transform: translateY(-10%);
 }
 
 @media (max-width: 764px) {
