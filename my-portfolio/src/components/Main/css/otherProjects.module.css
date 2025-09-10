@@ -14,7 +14,10 @@
 }
 
 .imageWrap {
+  display: flex;
+  flex-direction: column;
   width: clamp(24rem, 35vw, 40rem);
+  height: auto;
   padding: 2rem 0;
   justify-self: end;
   flex: 0.9;
@@ -22,9 +25,15 @@
   z-index: 2;
 }
 .imageWrap img {
-  width: clamp(18rem, 30vw, 50rem);
+  width: clamp(18rem, 45vw, 50rem);
   height: auto;
   margin-left: auto;
+  object-fit: scale-down;
+}
+
+section:nth-of-type(1) .imageWrap img {
+   width: clamp(18rem, 30vw, 50rem);
+   flex: 0;
 }
 
 .invertImg {
@@ -82,15 +91,18 @@
   border: 0.1px solid #8e8e8e;
 }
 
+.languages h3 {
+  color: var(--otherProjectsDescription-color);
+}
 .languages {
   display: flex;
   flex-direction: column;
   align-self: end;
   width: clamp(30vw, 35vw, 20rem);
+  height: auto;
   font-size: clamp(0.5rem, 2vw, 1.5rem);
   margin-top: auto;
-  transform: translateY(-50%);
-  margin-bottom: 1rem;
+  flex: 0.8;
 }
 .languages.rightSideUl {
   text-align: end;
@@ -108,6 +120,8 @@
   justify-content: end;
   gap: 1.3rem;
   width: 100%;
+  height: auto;
+  margin-top: 1rem;
 }
 .invertLinks {
   justify-content: start;

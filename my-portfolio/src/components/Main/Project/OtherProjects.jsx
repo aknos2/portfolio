@@ -87,7 +87,7 @@ const ProjectsA = ({title, description, imgHigh, imgLow, languageIndex, url, git
     }, '-=1.5');
     timeline.from(invertSide ? languageSplitLeft.words : languageSplitRight.words, {
       opacity: 0,
-      x: invertSide ? -50 : 50,
+      y: 50,
       stagger: 0.1,
       duration: 2,
       ease: "power2.out",
@@ -100,24 +100,16 @@ const ProjectsA = ({title, description, imgHigh, imgLow, languageIndex, url, git
 
       <div className={`${styles.container} ${invertSide ? styles.invertSideContainer : ""}`} ref={containerRef}>
           <div className={styles.imageWrap} ref={imageRef} data-speed="1">
-                <img src={imgHigh} 
-                    className={`${invertSide ? styles.invertImg : ""}` + " skew-image"}
-                    srcSet={`${imgLow} 480w, ${imgHigh} 1080w`}
-                    sizes="(max-width: 600px) 480px, 1080px"
-                    >
-                </img>``
-                <div className={ `${styles.links} ${invertSide ? styles.invertLinks : ""}`}>
-                  <WebsiteUrl link={url} />
-                  <GithubIcon link={github}/>
-                </div>
-          </div>
-
-          <div className={styles.description} data-speed="1.1">
-              <div className={styles.titleDescriptionWrap} ref={titleBanner}>
-                <h2 ref={invertSide ? titleRefLeft : titleRefRight } className={`${styles.rightSideTitle}`}>{title}</h2>
-                <p ref={invertSide ? textRefLeft : textRefRight}>{description}</p>
-              </div>
-
+            <img src={imgHigh} 
+                className={`${invertSide ? styles.invertImg : ""}` + " skew-image"}
+                srcSet={`${imgLow} 480w, ${imgHigh} 1080w`}
+                sizes="(max-width: 600px) 480px, 1080px"
+                >
+            </img>
+            <div className={ `${styles.links} ${invertSide ? styles.invertLinks : ""}`}>
+              <WebsiteUrl link={url} />
+              <GithubIcon link={github}/>
+            </div>
 
             <div className={`${styles.languages} ${invertSide ? styles.leftSideUl : styles.rightSideUl}`} ref={invertSide ? languagesRefLeft : languagesRefRight} data-speed="0.9">
               <h3>Built with</h3>
@@ -129,6 +121,15 @@ const ProjectsA = ({title, description, imgHigh, imgLow, languageIndex, url, git
                 ))}
               </ul>
             </div>
+          </div>
+
+          <div className={styles.description} data-speed="1.1">
+              <div className={styles.titleDescriptionWrap} ref={titleBanner}>
+                <h2 ref={invertSide ? titleRefLeft : titleRefRight } className={`${styles.rightSideTitle}`}>{title}</h2>
+                <p ref={invertSide ? textRefLeft : textRefRight}>{description}</p>
+              </div>
+
+
           </div>
       </div>
     </section>
@@ -193,15 +194,24 @@ function OtherProjects() {
             imgLow={projects[1].img.low}
             languageIndex={projects[1]}
           />
-            <ProjectsA 
-            title={projects[1].title}
-            description={projects[1].description}
-            url={projects[1].url}
-            github={projects[1].github}
-            imgHigh={projects[1].img.high}
-            imgLow={projects[1].img.low}
-            languageIndex={projects[1]}
+          <ProjectsA 
+            title={projects[2].title}
+            description={projects[2].description}
+            url={projects[2].url}
+            github={projects[2].github}
+            imgHigh={projects[2].img.high}
+            imgLow={projects[2].img.low}
+            languageIndex={projects[2]}
             invertSide
+          />
+          <ProjectsA 
+            title={projects[3].title}
+            description={projects[3].description}
+            url={projects[3].url}
+            github={projects[3].github}
+            imgHigh={projects[3].img.high}
+            imgLow={projects[3].img.low}
+            languageIndex={projects[3]}
           />
         
         </div>

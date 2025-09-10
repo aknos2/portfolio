@@ -32,10 +32,10 @@
 
   border-radius: 50%;
   /* animation: rise linear forwards; */
-  z-index: 999 !important;
+  z-index: 99;
   position: absolute;
   bottom: 150px;
-  transform: translateX(-3rem);
+  transform: translateX(-5rem);
   opacity: 0;
 }
 

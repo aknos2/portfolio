@@ -11,7 +11,7 @@ function SmallBubbles() {
     const container = containerRef.current;
     if (!bubblesActiveRef.current) return;
 
-    const numBubbles = 6;
+    const numBubbles = 7;
     const spacing = 40 / numBubbles; // divide horizontal space
 
     for (let i = 0; i < numBubbles; i++) {
@@ -23,7 +23,7 @@ function SmallBubbles() {
       bubble.style.left = left + "vw";
 
       // Random size
-      const size = gsap.utils.random(5, 15, 1);
+      const size = gsap.utils.random(5, 10, 1);
       bubble.style.width = size + "px";
       bubble.style.height = size + "px";
 
@@ -32,7 +32,7 @@ function SmallBubbles() {
       // Animate each bubble individually with its own random speed
       gsap.to(bubble, {
         y: gsap.utils.random(-800, -1000), // random vertical movement
-        duration: gsap.utils.random(3, 8), // random speed
+        duration: gsap.utils.random(3, 5), // random speed
         opacity: 1,
         ease: "power1.inOut",
         onComplete: () => bubble.remove(),

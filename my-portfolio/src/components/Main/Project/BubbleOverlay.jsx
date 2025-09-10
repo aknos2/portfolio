@@ -17,7 +17,7 @@ function BubbleOverlay() {
   const timeline = gsap.timeline({
     scrollTrigger: {
       trigger: containerRef.current,
-      start: 'bottom 50%',
+      start: 'bottom 20%',
       end: 'bottom 80%',
       ease: "power1.inOut",
       scrub: 1,
@@ -27,7 +27,7 @@ function BubbleOverlay() {
   timeline.to(".bubble-color", {
     opacity: 1,
     duration: 1,
-    ease: "power1.out"
+    ease: "power1.out",
   });
 
    bubbles.forEach((bubble, i) => {

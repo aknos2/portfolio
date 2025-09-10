@@ -35,15 +35,18 @@ export const projects = [
     img: {
       high: memoryCardHigh,
       low: memoryCardLow
-    }
+    },
   },
   {
     id: 3,
     title: "File Uploader",
     description: "Node.js + Supabase project for storing, organizing, and retrieving files/folders with real-time database integration",
-    frontend: "Javascript, React",
-    database: "PostgreSQL, Prisma",
-    authentication: "Supabase, Multer, Passport.js",
+    languages: [
+      "Javascript, React",
+      "Unplash API",
+      "PostgreSQL, Prisma",
+      "Supabase, Multer, Passport.js"
+    ],
     github: "https://github.com/aknos2/file-uploader",
     url:"https://file-uploader-hyhw.onrender.com/",
     img: {
@@ -55,9 +58,11 @@ export const projects = [
     id: 4,
     title: "Weather app",
     description: "World weather app using API and JS promises. It has day and night background wallpaper cycle.",
-    frontend: "Javascript, React",
-    database: "PostgreSQL, Prisma",
-    authentication: "Supabase, Multer, Passport.js",
+    languages: [
+      "Javascript, React",
+      "PostgreSQL, Prisma",
+      "Supabase, Multer, Passport.js",
+    ],
     github: "https://github.com/aknos2/weather-app",
     url:"https://aknos2.github.io/weather-app/",
     img: {
