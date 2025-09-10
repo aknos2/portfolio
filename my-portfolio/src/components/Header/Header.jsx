@@ -14,27 +14,27 @@ function Header({handleProjects}) {
   const isAbout = location.pathname === '/about';
   const navRef = useRef();
 
-  useGSAP(() => {
-    gsap.fromTo(navRef.current, 
-      {
-        backgroundColor: 'transparent',
-        backdropFilter: 'blur(0px)'
-      }, 
-      {
-        backgroundColor: 'rgba(0, 0, 0, 0.3)',
-        backdropFilter: 'blur(10px)',
-        duration: 0.3,
-        ease: 'power1.inOut',
-        scrollTrigger: {
-          trigger: document.body,
-          start: '100px top',
-          end: '200px top',
-          scrub: 1,
-          toggleActions: 'play none none reverse'
-        }
-      }
-    );
-  }, []);
+  // useGSAP(() => {
+  //   gsap.fromTo(navRef.current, 
+  //     {
+  //       backgroundColor: 'transparent',
+  //       backdropFilter: 'blur(0px)'
+  //     }, 
+  //     {
+  //       backgroundColor: 'rgba(0, 0, 0, 0.3)',
+  //       backdropFilter: 'blur(10px)',
+  //       duration: 0.3,
+  //       ease: 'power1.inOut',
+  //       scrollTrigger: {
+  //         trigger: document.body,
+  //         start: '100px top',
+  //         end: '200px top',
+  //         scrub: 1,
+  //         toggleActions: 'play none none reverse'
+  //       }
+  //     }
+  //   );
+  // }, []);
 
   return (
     <nav ref={navRef}>

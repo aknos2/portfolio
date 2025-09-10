@@ -3,8 +3,10 @@ import { useGSAP } from "@gsap/react";
 import { ScrollSmoother, SplitText } from "gsap/all";
 import { ScrollTrigger } from "gsap/all";
 import gsap from "gsap";
-import { useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import { projects } from "../../../data/projects";
+import backgroundVideo from '../../../assets/underwater.mp4'
+import BubbleOverlay from "./BubbleOverlay";
 
 gsap.registerPlugin(SplitText, ScrollTrigger, ScrollSmoother);
 
@@ -63,11 +65,15 @@ const ProjectsA = ({title, description, imgHigh, imgLow, languageIndex, url, git
       },
     });
 
-    timeline.from(imageRef.current, {
-      opacity: 0,
-      duration: 1,
-      ease: "power2.out",
+    gsap.set(imageRef.current, {
+      skewY: "var(--scroll-skew, 0deg)",
     });
+
+    // timeline.from(imageRef.current, {
+    //   opacity: 0,
+    //   duration: 1,
+    //   ease: "power2.out",
+    // });
     timeline.fromTo(titleBanner.current, {
       opacity: 0}, {opacity: 1, duration: 1, ease: "power1.out"}, "-=2");
     timeline.fromTo(invertSide ? titleRefLeft.current : titleRefRight.current, {
@@ -86,15 +92,16 @@ const ProjectsA = ({title, description, imgHigh, imgLow, languageIndex, url, git
       duration: 2,
       ease: "power2.out",
     }, '-=2');
+    
   }, []);
 
   return (
     <section>
 
       <div className={`${styles.container} ${invertSide ? styles.invertSideContainer : ""}`} ref={containerRef}>
-          <div className={styles.imageWrap} ref={imageRef}>
+          <div className={styles.imageWrap} ref={imageRef} data-speed="1">
                 <img src={imgHigh} 
-                    className={`${invertSide ? styles.invertImg : ""}`}
+                    className={`${invertSide ? styles.invertImg : ""}` + " skew-image"}
                     srcSet={`${imgLow} 480w, ${imgHigh} 1080w`}
                     sizes="(max-width: 600px) 480px, 1080px"
                     >
@@ -105,14 +112,14 @@ const ProjectsA = ({title, description, imgHigh, imgLow, languageIndex, url, git
                 </div>
           </div>
 
-          <div className={styles.description}>
+          <div className={styles.description} data-speed="1.1">
               <div className={styles.titleDescriptionWrap} ref={titleBanner}>
                 <h2 ref={invertSide ? titleRefLeft : titleRefRight } className={`${styles.rightSideTitle}`}>{title}</h2>
                 <p ref={invertSide ? textRefLeft : textRefRight}>{description}</p>
               </div>
 
 
-            <div className={`${styles.languages} ${invertSide ? styles.leftSideUl : styles.rightSide}`} ref={invertSide ? languagesRefLeft : languagesRefRight}>
+            <div className={`${styles.languages} ${invertSide ? styles.leftSideUl : styles.rightSideUl}`} ref={invertSide ? languagesRefLeft : languagesRefRight} data-speed="0.9">
               <h3>Built with</h3>
               <ul className={styles.rightSideUl}>
                 {languageIndex.languages.map((language, idx) => (
@@ -129,27 +136,78 @@ const ProjectsA = ({title, description, imgHigh, imgLow, languageIndex, url, git
 }
 
 function OtherProjects() {
+  const containerRef = useRef(null);
+  const scrollableRef = useRef(null);
+
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      const scrollable = scrollableRef.current;
+      const container = containerRef.current;
+
+      // Get the total scrollable height
+      const scrollHeight = scrollable.scrollHeight;
+      const containerHeight = container.offsetHeight;
+
+      ScrollTrigger.create({
+        trigger: container,
+        start: "top top",
+        end: "+=" + (scrollHeight - containerHeight), 
+        pin: true,
+        scrub: 1,
+        onUpdate: self => {
+          // Translate inner content based on progress
+          gsap.to(scrollable, {
+            y: -((scrollHeight - containerHeight) * self.progress),
+            // ease: "none",
+            overwrite: "auto"
+          });
+        }
+      });
+    });
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <>
-      <ProjectsA title={projects[1].title}
-                 description={projects[1].description}
-                 url={projects[1].url}
-                 github={projects[1].github}
-                 imgHigh={projects[1].img.high}
-                 imgLow={projects[1].img.low}
-                 languageIndex={projects[1]}
-       />
-      <ProjectsA title={projects[1].title}
-                 description={projects[1].description}
-                 url={projects[1].url}
-                 github={projects[1].github}
-                 imgHigh={projects[1].img.high}
-                 imgLow={projects[1].img.low}
-                 languageIndex={projects[1]}
-                 invertSide
-      />
-      
-    </>
+    <section>
+         <div className={styles.otherProjectsSection} ref={containerRef}>
+        <div className={styles.videoBackground}>
+          <video autoPlay loop muted playsInline className={styles.video}>
+            <source src={backgroundVideo} type="video/mp4" />
+          </video>
+          <BubbleOverlay />
+        </div>
+
+        {/* Content over the video */}
+        <div
+          className={styles.content}
+          ref={scrollableRef}
+        >
+          {/* <div className="partial-space"></div> */}
+          <ProjectsA 
+            title={projects[1].title}
+            description={projects[1].description}
+            url={projects[1].url}
+            github={projects[1].github}
+            imgHigh={projects[1].img.high}
+            imgLow={projects[1].img.low}
+            languageIndex={projects[1]}
+          />
+            <ProjectsA 
+            title={projects[1].title}
+            description={projects[1].description}
+            url={projects[1].url}
+            github={projects[1].github}
+            imgHigh={projects[1].img.high}
+            imgLow={projects[1].img.low}
+            languageIndex={projects[1]}
+            invertSide
+          />
+        
+        </div>
+      </div>
+    </section>
+    
   )
 }
 

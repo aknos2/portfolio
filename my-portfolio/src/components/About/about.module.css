@@ -65,7 +65,7 @@
 
 .skillCategory {
   color: var(--description-color);
-  font-size: clamp(0.8rem, 2vw, 2rem);
+  font-size: clamp(0.8rem, 2vw, 1.8rem);
 }
 .skillCategory span::before{
   content: "-";

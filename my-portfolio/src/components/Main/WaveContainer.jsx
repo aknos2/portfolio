@@ -115,8 +115,6 @@ function WaveContainer({ isProject }) {
           stagger: 0.5
         })
       });
-
-
     }
 
   }, { dependencies: [isProject] });
@@ -142,8 +140,9 @@ function WaveContainer({ isProject }) {
 
       <div className={wave.bubbleContainer}>
         <Bubbles isProject={isProject}/>
-        <div className={wave.bubble}></div>
       </div>
+
+     
 
       {/* Render the real nodes */}
       {renderMovables()}

@@ -1,72 +1,62 @@
+import Main from './components/Main/Main';
 import { useLocation } from 'react-router-dom';
-import { useState, useRef } from "react";
+import OtherProjects from './components/Main/Project/OtherProjects';
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
-import { SplitText } from "gsap/SplitText";
-import './components/Main/css/main.css';
-import MyDescription from './components/Main/MyDescription';
-import WaveContainer from './components/Main/WaveContainer';
-import Project from './components/Main/Project/Project';
-import Languages from './components/Main/Project/Languages';
-import OtherProjects from './components/Main/Project/OtherProjects';
-import { projects } from './data/projects';
+import { ScrollSmoother, ScrollTrigger } from 'gsap/all';
+import { useRef } from 'react';
 
-const ProjectNest = ({isProject, watchingProject, setCurrentProject, currentProject}) => {
-  const text = useRef();
-  const title = useRef();
-
-  useGSAP(() => {
-    const splitText = SplitText.create(text.current, {
-      type: "words",
-    })
-
-    gsap.from(splitText.words, {
-      opacity: 0,
-      x: 70,
-      duration: 3,
-      ease: "power2.out",
-      onComplete: () => splitText.revert()
-    })
-    gsap.from(title.current, {
-      opacity: 0,
-      duration: 1,
-      delay: 1.5,
-      ease: "power2.out"
-    })
-  }, [isProject]);
-
-  return (
-        <>
-          <div className='project-background-title'><h1 ref={text}>PROJECTS</h1></div>
-          <div className="project-wrap">
-            <Languages watchingProject={watchingProject} title={title}/>
-            <Project currentProject={currentProject} setCurrentProject={setCurrentProject}/>
-          </div>
-         </>
-  )
-}
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
 function App() {
   const location = useLocation();
   const isProject = location.pathname === '/projects';
-  const [currentProject, setCurrentProject] = useState(0);
+  const smoothWrapper = useRef();
+  const smoothContent = useRef();
 
-  const watchingProject = projects[currentProject];
+  gsap.registerEffect({
+    name: "skewOnScroll",
+    effect: (targets, config) => {
+      const clamp = gsap.utils.clamp(-5, 5);
+      const skewSetter = gsap.quickSetter(targets, "skewY", "deg");
+
+      ScrollSmoother.create({
+        wrapper: config.wrapper,
+        content: config.content,
+        smooth: 1,
+        effects: true,
+        smoothTouch: 0.1,
+        onUpdate: (self) => skewSetter(clamp(self.getVelocity() / -500)),
+        onStop: () => skewSetter(0),
+      });
+    },
+    extendTimeline: false
+  });
+
+  useGSAP(() => {
+    if (isProject) {
+      gsap.effects.skewOnScroll(".skew-image", {
+        wrapper: smoothWrapper.current,
+        content: smoothContent.current
+      });
+     
+    }
+  }, [isProject]);
 
   return (
-    <div className="project-container" style={{ position: "relative" }}>
-      <WaveContainer isProject={isProject}/>
-      {!isProject ? (
-        <MyDescription/>
-      ) : (
-        <>
-        <ProjectNest isProject={isProject} watchingProject={watchingProject} setCurrentProject={setCurrentProject} currentProject={currentProject}/>
-        <div className="partial-space"></div>
-        <OtherProjects />
-        </>
-      )}
+    <div id="smooth-wrapper" ref={smoothWrapper}>
+      <div id="smooth-content" ref={smoothContent}>
+        <Main isProject={isProject} />
+            {isProject && (
+              <>
+              {/* <div className="partial-space"></div> */}
+              <OtherProjects />
+              </>
+            )}
+      </div>
     </div>
   );
 }
 
 export default App;
+

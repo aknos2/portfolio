@@ -3,6 +3,7 @@ import styles from "./css/MyDescription.module.css";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { SplitText } from "gsap/SplitText";
+import SmallBubbles from "../Animations/BubblesSmall";
 
 gsap.registerPlugin(useGSAP, SplitText);
 
@@ -90,7 +91,9 @@ function MyDescription() {
   }, { scope: containerRef });
 
   return (
+    <>
     <div ref={containerRef} className={styles.container}>
+      <SmallBubbles />
       <span ref={firstTextRef} className={styles.typingEffect}>
         {firstText}
       </span>
@@ -98,6 +101,7 @@ function MyDescription() {
         {secondText}
       </span>
     </div>
+    </>
   );
 }
 

@@ -11,19 +11,20 @@
 
 .project-wrap {
   position: absolute;
-  top: 5%;
+  top: 2%;
   left: 50%;
   transform: translate(-70%, 0%);
   display: flex;
   justify-content: center;
+  z-index: 10;
 }
 
 .partial-space {
   display: inline-block;
-  height: 31rem;
+  height: 25vh;
   padding: 0;
   margin: 0;
-}
+} 
 
 @media (max-width:764px) {
   .project-wrap {
@@ -34,4 +35,19 @@
     transform: translate(-55%, 0%);
     gap: 0.5rem
   }
+}
+
+#smooth-wrapper {
+  overflow: hidden;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+#smooth-content {
+  overflow: visible;
+  width: 100%;
+  padding-top: clamp(10vh, 13vh, 15vh); /* Match fixed header height */
 }

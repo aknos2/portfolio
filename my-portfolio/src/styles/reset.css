@@ -26,7 +26,7 @@ body {
   width: 100%;
   background-color: var(--body-bg-color);
   scroll-behavior: smooth;
-  padding-top: clamp(10vh, 13vh, 15vh);
+  padding-top: clamp(10vh, 13vh, 15vh); /* Match fixed header height */
 }
 
 /* 6. Improve media defaults */
