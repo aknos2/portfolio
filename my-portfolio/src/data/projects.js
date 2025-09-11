@@ -3,7 +3,9 @@ import doggoBlogLow from '../assets/projects/doggo-low.png';
 import memoryCardHigh from '../assets/projects/memoryCard-high.webp';
 import memoryCardLow from '../assets/projects/memoryCard-low.webp';
 import fileUploaderHigh from '../assets/projects/fileuploader-high.png'
-import fileUploaderLow from '../assets/projects/fileuploader-low.png'
+import fileUploaderLow from '../assets/projects/fileuploader-low.png';
+import battleshipHigh from '../assets/projects/battleship-high.png';
+import battleshipLow from '../assets/projects/battleship-low.png';
 
 
 export const projects = [ 
@@ -36,15 +38,18 @@ export const projects = [
       high: memoryCardHigh,
       low: memoryCardLow
     },
+    content: `I created this game as a mobile app game in mind. A game which can be simple, short, but addictive.\n
+              The theme I chose was cats, but the idea could be implemented in any other topic.\n
+              I still want to implement more things like special stages which the image will move, or other mini-games like counting the number of cats, like WarioWare.`
   },
   {
     id: 3,
     title: "File Uploader",
     description: "Node.js + Supabase project for storing, organizing, and retrieving files/folders with real-time database integration",
     languages: [
-      "Javascript, React",
-      "Unplash API",
+      "Node.js, Express",
       "PostgreSQL, Prisma",
+      "Passport.js (Local strategy)",
       "Supabase, Multer, Passport.js"
     ],
     github: "https://github.com/aknos2/file-uploader",
@@ -52,22 +57,25 @@ export const projects = [
     img: {
       high: fileUploaderHigh,
       low: fileUploaderLow
-    }
+    },
+    content: `This project is a full-stack file uploader built with Node.js and Supabase.\n
+              It allows users to upload, organize, and retrieve files and folders in real time.\n
+              The backend integrates Passport.js for authentication, Multer for server-side file handling, and Supabase for secure cloud storage and database management.`
   },
   {
     id: 4,
-    title: "Weather app",
-    description: "World weather app using API and JS promises. It has day and night background wallpaper cycle.",
+    title: "Battleship",
+    description: "A fast-paced Battleship game built with JavaScript featuring a clean and intuitive UI/UX.",
     languages: [
-      "Javascript, React",
-      "PostgreSQL, Prisma",
-      "Supabase, Multer, Passport.js",
+      "Javascript",
+      "Webpack, Jest",
     ],
-    github: "https://github.com/aknos2/weather-app",
-    url:"https://aknos2.github.io/weather-app/",
+    github: "https://github.com/aknos2/Battleship",
+    url:"https://aknos2.github.io/Battleship",
     img: {
-      high: fileUploaderHigh,
-      low: fileUploaderLow
-    }
+      high: battleshipHigh,
+      low: battleshipLow
+    },
+    content: ` The game includes intelligent AI logic that targets consecutive squares when a hit is detected, and automatically marks all adjacent cells when a ship is destroyed for smoother gameplay.`
   }
 ]

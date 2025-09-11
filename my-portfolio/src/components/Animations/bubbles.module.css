@@ -34,15 +34,14 @@
   /* animation: rise linear forwards; */
   z-index: 99;
   position: absolute;
-  bottom: 150px;
-  transform: translateX(-5rem);
+  bottom: 10rem;
   opacity: 0;
 }
 
 .containerSmall {
   position: absolute;
   top: 0;
-  left: 0;
+  left: 3rem;
   width: 50vw;
   height: 100vh;
   pointer-events: none; /*allow clicks through*/

@@ -3,7 +3,7 @@ import { useGSAP } from "@gsap/react";
 import { ScrollSmoother, SplitText } from "gsap/all";
 import { ScrollTrigger } from "gsap/all";
 import gsap from "gsap";
-import { useLayoutEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 import { projects } from "../../../data/projects";
 import backgroundVideo from '../../../assets/underwater.mp4'
 import BubbleOverlay from "./BubbleOverlay";
@@ -30,7 +30,7 @@ const WebsiteUrl = ({link}) => {
   )
 }
 
-const ProjectsA = ({title, description, imgHigh, imgLow, languageIndex, url, github, invertSide=false}) => {
+const ProjectsA = ({title, description, imgHigh, imgLow, languageIndex, url, github, invertSide=false, content}) => {
   const containerRef = useRef();
   const titleRefRight = useRef();
   const titleRefLeft = useRef();
@@ -106,20 +106,22 @@ const ProjectsA = ({title, description, imgHigh, imgLow, languageIndex, url, git
                 sizes="(max-width: 600px) 480px, 1080px"
                 >
             </img>
-            <div className={ `${styles.links} ${invertSide ? styles.invertLinks : ""}`}>
-              <WebsiteUrl link={url} />
-              <GithubIcon link={github}/>
-            </div>
+            <div className={styles.languageLinkWrap}>
+              <div className={ `${styles.links} ${invertSide ? styles.invertLinks : ""}`}>
+                <WebsiteUrl link={url} />
+                <GithubIcon link={github}/>
+              </div>
 
-            <div className={`${styles.languages} ${invertSide ? styles.leftSideUl : styles.rightSideUl}`} ref={invertSide ? languagesRefLeft : languagesRefRight} data-speed="0.9">
-              <h3>Built with</h3>
-              <ul className={styles.rightSideUl}>
-                {languageIndex.languages.map((language, idx) => (
-                  <li key={idx}>
-                    { invertSide ?  (<span>- {language}</span>) : (<span>{language} -</span>)}
-                  </li>
-                ))}
-              </ul>
+              <div className={`${styles.languages} ${invertSide ? styles.leftSideUl : styles.rightSideUl}`} ref={invertSide ? languagesRefLeft : languagesRefRight} data-speed="0.9">
+                <h3>Built with</h3>
+                <ul className={styles.rightSideUl}>
+                  {languageIndex.languages.map((language, idx) => (
+                    <li key={idx}>
+                      { invertSide ?  (<span>- {language}</span>) : (<span>{language} -</span>)}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
 
@@ -128,7 +130,11 @@ const ProjectsA = ({title, description, imgHigh, imgLow, languageIndex, url, git
                 <h2 ref={invertSide ? titleRefLeft : titleRefRight } className={`${styles.rightSideTitle}`}>{title}</h2>
                 <p ref={invertSide ? textRefLeft : textRefRight}>{description}</p>
               </div>
-
+              <div className={styles.descriptionContent}>
+                {content.split("\n").map((paragraph, i) => (
+                  <p key={i}>{paragraph.trim()}</p>
+                ))}
+              </div>
 
           </div>
       </div>
@@ -140,26 +146,19 @@ function OtherProjects() {
   const containerRef = useRef(null);
   const scrollableRef = useRef(null);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const ctx = gsap.context(() => {
       const scrollable = scrollableRef.current;
       const container = containerRef.current;
 
-      // Get the total scrollable height
-      const scrollHeight = scrollable.scrollHeight;
-      const containerHeight = container.offsetHeight;
-
       ScrollTrigger.create({
         trigger: container,
         start: "top top",
-        end: "+=" + (scrollHeight - containerHeight), 
+        end: () => "+=" + (scrollable.scrollHeight - window.innerHeight),
         pin: true,
-        scrub: 1,
         onUpdate: self => {
-          // Translate inner content based on progress
           gsap.to(scrollable, {
-            y: -((scrollHeight - containerHeight) * self.progress),
-            // ease: "none",
+            y: -((scrollable.scrollHeight - window.innerHeight) * self.progress),
             overwrite: "auto"
           });
         }
@@ -193,6 +192,7 @@ function OtherProjects() {
             imgHigh={projects[1].img.high}
             imgLow={projects[1].img.low}
             languageIndex={projects[1]}
+            content={projects[1].content}
           />
           <ProjectsA 
             title={projects[2].title}
@@ -202,6 +202,7 @@ function OtherProjects() {
             imgHigh={projects[2].img.high}
             imgLow={projects[2].img.low}
             languageIndex={projects[2]}
+            content={projects[2].content}
             invertSide
           />
           <ProjectsA 
@@ -212,6 +213,7 @@ function OtherProjects() {
             imgHigh={projects[3].img.high}
             imgLow={projects[3].img.low}
             languageIndex={projects[3]}
+            content={projects[3].content}
           />
         
         </div>

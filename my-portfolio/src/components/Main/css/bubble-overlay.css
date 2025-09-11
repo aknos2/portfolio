@@ -10,8 +10,6 @@
 
 .bubble-color {
   border-radius: 50%;
-  width: 100px;
-  height: 100px;
   position: absolute;
   box-shadow:
               0 0 18px rgba(255, 220, 180, 0.685),
@@ -19,8 +17,7 @@
               0 0 70px rgba(255, 220, 180, 0.305),
               0 0 90px rgba(255, 220, 180, 0.255)
             ;
-            background-color: rgba(255, 240, 220, 0.879);
-            filter: blur(2px);
+            background-color: rgba(255, 240, 220, 0.668);
 }
 
 .bubble1 {
@@ -37,6 +34,7 @@
   width: 130px;
   height: 130px;
   transform: translate(170px, 0);
+  filter: blur(1px);
 }
 
 .bubble3 {
@@ -45,17 +43,29 @@
   width: 150px;
   height: 150px;
   transform: translate(0, 50px);
+  filter: blur(2px);
 }
 
 .bubble4 {
   top: 30%;
   right: 0;
+  filter: blur(3px);
+  width: 100px;
+  height: 100px;
 }
 
 .bubble5 {
   bottom: 0;
   right: 0; 
-  width: 200px;
-  height: 200px;
+  width: 190px;
+  height: 190px;
   transform: translate(40px, 60px);
+  filter: blur(1px);
+}
+
+@media (max-width: 764px) {
+  .bubble-color {
+    max-width: 100px;
+    max-height: 100px;
+  }
 }

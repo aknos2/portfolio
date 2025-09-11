@@ -2,7 +2,7 @@
   display: flex;
   flex-wrap: wrap;
   width: 100vw;
-  height: 100vh;
+  height: 130vh;
   z-index: 2;
   position: relative;
   font-size: clamp(1rem, 2vw, 1.5rem);
@@ -16,7 +16,7 @@
 .imageWrap {
   display: flex;
   flex-direction: column;
-  width: clamp(24rem, 35vw, 40rem);
+  width: clamp(24rem, 30vw, 40rem);
   height: auto;
   padding: 2rem 0;
   justify-self: end;
@@ -25,10 +25,16 @@
   z-index: 2;
 }
 .imageWrap img {
-  width: clamp(18rem, 45vw, 50rem);
+  width: clamp(18rem, 40vw, 50rem);
   height: auto;
   margin-left: auto;
   object-fit: scale-down;
+  background: rgba(255, 255, 255, 0.147);
+  box-shadow: inset 1px 3px 8px 2px rgba(242, 242, 242, 0.146);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(3.2px);
+  padding: 1rem;
+  border-radius: 10px;
 }
 
 section:nth-of-type(1) .imageWrap img {
@@ -46,19 +52,33 @@ section:nth-of-type(1) .imageWrap img {
 .description h3 {
   color: var(--otherProjectsDescription-color);
 }
-.description p{
-  width: clamp(1rem, 30ch, 40ch);
-}
+
 .description {
   display: flex;
-  flex-wrap: wrap;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 2rem;
   padding: 2rem;
   position: relative;
   z-index: 1;
-  width: clamp(20rem, 45vw, 60rem);
+  width: clamp(20rem, 40vw, 60rem);
+  height: 80vh;
+}
+
+.descriptionContent {
+  background: var(--projectsTitleBanner-bg);
+  width: 100%;
+  border: 0.1px solid #8e8e8e;
+  height: auto;
+  padding: 1rem;
+  overflow: auto;
+  border-radius: 10px;
+  border-bottom: none;
+  box-shadow: 0 2px 3px 0px rgba(229, 215, 21, 0.398);
+}
+
+section:nth-of-type(1) .description {
+   width: clamp(20rem, 45vw, 60rem);
 }
 
 .titleDescriptionWrap {
@@ -68,6 +88,9 @@ section:nth-of-type(1) .imageWrap img {
   gap: 1rem;
   position: relative;
   z-index: 2;
+}
+.titleDescriptionWrap p{
+  width: clamp(1rem, 30ch, 40ch);
 }
 .rightSideTitle{
   text-align: center;
@@ -84,11 +107,17 @@ section:nth-of-type(1) .imageWrap img {
   top: 0;
   left: 50%;
   width: clamp(100vw, 130vw, 250vw);
-  height: 110%;
+  height: 105%;
   background: var(--projectsTitleBanner-bg);
   transform: translateX(-50%);
   z-index: -1;       
   border: 0.1px solid #8e8e8e;
+}
+
+.languageLinkWrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .languages h3 {
@@ -100,16 +129,18 @@ section:nth-of-type(1) .imageWrap img {
   align-self: end;
   width: clamp(30vw, 35vw, 20rem);
   height: auto;
-  font-size: clamp(0.5rem, 2vw, 1.5rem);
+  font-size: clamp(1rem, 2vw, 1.5rem);
   margin-top: auto;
   flex: 0.8;
 }
 .languages.rightSideUl {
   text-align: end;
+  margin-right: 1rem;
 }
 .languages.leftSideUl {
   text-align: start;
   align-self: start;
+  margin-left: 1rem;
 }
 
 .links a {
@@ -118,10 +149,11 @@ section:nth-of-type(1) .imageWrap img {
 .links {
   display: flex;
   justify-content: end;
-  gap: 1.3rem;
+  gap: 1.2rem;
   width: 100%;
   height: auto;
   margin-top: 1rem;
+  padding: 1rem;
 }
 .invertLinks {
   justify-content: start;
@@ -166,7 +198,7 @@ section:nth-of-type(1) .imageWrap img {
 .content {
   position: relative;
   width: 100%;
-  margin-top: 4rem;
+  height: auto;
 }
 
 .smoothWrapper {
@@ -187,13 +219,34 @@ section:nth-of-type(1) .imageWrap img {
 
 
 @media (max-width: 764px) {
+  .section {
+    height: 90vh;
+  }
   .imageWrap {
     flex: 1;
   }
   .imageWrap img {
-    margin: 0 auto;
+    margin: 0 auto !important;
+  }
+  .languageLinkWrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
   }
   .links {
-    justify-content: center;
+    width: fit-content;
+  }
+  .language {
+    width: fit-;
+  }
+  .descriptionContent {
+    height: 30vh;
+  }
+  .titleDescriptionWrap {
+    gap: 0.5rem;
+    position: relative;
+    z-index: 2;
+    margin-top: -2rem;
   }
 }

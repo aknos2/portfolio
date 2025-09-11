@@ -34,6 +34,7 @@ function SmallBubbles() {
         y: gsap.utils.random(-800, -1000), // random vertical movement
         duration: gsap.utils.random(3, 5), // random speed
         opacity: 1,
+        delay: 0.5,
         ease: "power1.inOut",
         onComplete: () => bubble.remove(),
       });

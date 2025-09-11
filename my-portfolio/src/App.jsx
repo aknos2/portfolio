@@ -18,7 +18,7 @@ function App() {
     name: "skewOnScroll",
     effect: (targets, config) => {
       const clamp = gsap.utils.clamp(-5, 5);
-      const skewSetter = gsap.quickSetter(targets, "skewY", "deg");
+      // const skewSetter = gsap.quickSetter(targets, "skewY", "deg");
 
       ScrollSmoother.create({
         wrapper: config.wrapper,
@@ -26,8 +26,8 @@ function App() {
         smooth: 1,
         effects: true,
         smoothTouch: 0.1,
-        onUpdate: (self) => skewSetter(clamp(self.getVelocity() / -500)),
-        onStop: () => skewSetter(0),
+        // onUpdate: (self) => skewSetter(clamp(self.getVelocity() / -500)),
+        // onStop: () => skewSetter(0),
       });
     },
     extendTimeline: false

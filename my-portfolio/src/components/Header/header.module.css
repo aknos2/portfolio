@@ -10,10 +10,38 @@ nav {
   z-index: 99;
 }
 
-nav button {
+nav button,
+nav p,
+nav ul li,
+nav a {
   background-color: transparent;
   border: none;
   color: var(--header-text-color);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+nav button::after,
+nav p::after,
+nav ul li::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  background: white;
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: transform ease 0.3s;
+}
+
+nav button:hover::after,
+nav p:hover::after,
+nav ul li:hover::after {
+  transform: translateX(0);
+  opacity: 1;
 }
 
 .container {
@@ -31,6 +59,9 @@ nav button {
 }
 .logo {
   margin-left: 3rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
 }
 .navLinks {
   color: var(--header-text-color);
