@@ -5,7 +5,7 @@
   height: 130vh;
   z-index: 2;
   position: relative;
-  font-size: clamp(1rem, 2vw, 1.5rem);
+  font-size: clamp(1rem, 2vw, 1.3rem);
   padding: 1rem;
 }
 
@@ -17,9 +17,9 @@
   display: flex;
   flex-direction: column;
   width: clamp(24rem, 30vw, 40rem);
-  height: auto;
+  height: 100vh;
   padding: 2rem 0;
-  justify-self: end;
+  justify-items: end;
   flex: 0.9;
   position: relative;
   z-index: 2;
@@ -31,9 +31,9 @@
   object-fit: scale-down;
   background: rgba(255, 255, 255, 0.147);
   box-shadow: inset 1px 3px 8px 2px rgba(242, 242, 242, 0.146);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(3.2px);
-  padding: 1rem;
+  border: 0.5px solid #ffffff50;
+  padding: 0.5rem;
   border-radius: 10px;
 }
 
@@ -53,11 +53,12 @@ section:nth-of-type(1) .imageWrap img {
   color: var(--otherProjectsDescription-color);
 }
 
+
 .description {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
+  gap: 3rem;
   padding: 2rem;
   position: relative;
   z-index: 1;
@@ -68,13 +69,11 @@ section:nth-of-type(1) .imageWrap img {
 .descriptionContent {
   background: var(--projectsTitleBanner-bg);
   width: 100%;
-  border: 0.1px solid #8e8e8e;
+  border: 0.1px solid #ffffff9e;
   height: auto;
   padding: 1rem;
   overflow: auto;
-  border-radius: 10px;
-  border-bottom: none;
-  box-shadow: 0 2px 3px 0px rgba(229, 215, 21, 0.398);
+  border-width: 5px 0 5px 0;
 }
 
 section:nth-of-type(1) .description {
@@ -118,6 +117,7 @@ section:nth-of-type(1) .description {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  flex: 1;
 }
 
 .languages h3 {
@@ -129,8 +129,8 @@ section:nth-of-type(1) .description {
   align-self: end;
   width: clamp(30vw, 35vw, 20rem);
   height: auto;
-  font-size: clamp(1rem, 2vw, 1.5rem);
-  margin-top: auto;
+  font-size: clamp(1rem, 2vw, 1.3rem);
+
   flex: 0.8;
 }
 .languages.rightSideUl {
@@ -164,20 +164,20 @@ section:nth-of-type(1) .description {
 }
 
 .github {
-  width: clamp(2rem, 3vw, 2.5rem);    
+  width: clamp(2rem, 3vw, 2rem);    
   fill: whitesmoke;
   transform: translateY(-20%);
 }
 
 .newTab {
-  width: clamp(1.5rem, 3vw, 2.5rem);    
+  width: clamp(1.5rem, 3vw, 2rem);    
   fill: whitesmoke;
   transform: translateY(-10%);
 }
 
 .otherProjectsSection {
   position: relative;
-  height: 130vh;
+  height: 200vh;
 }
 
 .videoBackground{
@@ -198,7 +198,7 @@ section:nth-of-type(1) .description {
 .content {
   position: relative;
   width: 100%;
-  height: auto;
+  height: 100vh;
 }
 
 .smoothWrapper {
@@ -214,7 +214,7 @@ section:nth-of-type(1) .description {
 .smoothContent {
   overflow: visible;
   width: 100%;
-  padding-top: clamp(10vh, 13vh, 15vh); /* Match fixed header height */
+  padding-top: clamp(10vh, 15vh, 17vh); /* Match fixed header height */
 }
 
 

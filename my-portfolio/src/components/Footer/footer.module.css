@@ -1,0 +1,42 @@
+.container p, 
+.container a {
+  color: var(--otherProjectsDescription-color);
+}
+.container a:hover {
+  color: rgba(220, 220, 153, 0.722);
+}
+
+small {
+  color: rgba(250, 235, 215, 0.696);
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  border-top: 0.5px solid rgba(255, 255, 255, 0.197);
+  position: relative;
+  z-index: 10;
+}
+
+.upperPart {
+  font-size: clamp(2rem, 5vw, 5rem);
+  width: 50vw;
+  margin-right: auto;
+  line-height: clamp(10px, 35px, 70px);
+  text-align: end;
+}
+
+.lowerPart {
+  font-size: clamp(1rem, 3vw, 5rem);
+  width: 50vw;
+  margin-left: auto;
+
+}
+
+.copyrightWrap {
+  text-align: end;
+  padding-right: 1rem;
+  font-size: smaller;
+  background: var(--footerCopyright-bg);
+  border-top: 0.5px solid rgba(255, 255, 255, 0.437);
+  width: 100%;
+}

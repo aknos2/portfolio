@@ -61,10 +61,14 @@ function Main({ isProject }) {
         ) : (
           <>
           <ProjectNest isProject={isProject} watchingProject={watchingProject} setCurrentProject={setCurrentProject} currentProject={currentProject}/>
-          {/* <div className="partial-space"></div> */}
+          <div className='scroll-down-message'>
+            <div className="scrolldown-left"></div>
+            <p>other projects</p>
+            <div className="scrolldown-right"></div>
+          </div>
           </>
         )}
-        <div className="partial-space"></div> 
+        {/* <div className="partial-space"></div>  */}
       </div>
     </section>
   )

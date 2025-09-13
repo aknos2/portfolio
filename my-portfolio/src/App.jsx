@@ -5,6 +5,7 @@ import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollSmoother, ScrollTrigger } from 'gsap/all';
 import { useRef } from 'react';
+import Footer from './components/Footer/Footer';
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
@@ -51,6 +52,7 @@ function App() {
               <>
               {/* <div className="partial-space"></div> */}
               <OtherProjects />
+              <Footer />
               </>
             )}
       </div>

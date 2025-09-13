@@ -7,6 +7,7 @@ import { useEffect, useLayoutEffect, useRef } from "react";
 import { projects } from "../../../data/projects";
 import backgroundVideo from '../../../assets/underwater.mp4'
 import BubbleOverlay from "./BubbleOverlay";
+import Footer from "../../Footer/Footer";
 
 gsap.registerPlugin(SplitText, ScrollTrigger, ScrollSmoother);
 
@@ -34,57 +35,67 @@ const ProjectsA = ({title, description, imgHigh, imgLow, languageIndex, url, git
   const containerRef = useRef();
   const titleRefRight = useRef();
   const titleRefLeft = useRef();
-  const textRefRight = useRef();
-  const textRefLeft = useRef();
+  const textRef = useRef();
   const languagesRefRight = useRef();
   const languagesRefLeft = useRef();
   const imageRef = useRef();
   const titleBanner = useRef();
+  const descriptionRef = useRef();
 
   useGSAP(() => {
-    const textSplitRight = new SplitText(textRefRight.current, {
-      type: "lines"
+    const textSplit = SplitText.create(textRef.current, {
+      type: "lines",
+      mask: "lines"
     });
-    const textSplitLeft = new SplitText(textRefLeft.current, {
-      type: "lines"
+    const descriptionSplit = SplitText.create(descriptionRef.current, {
+      type: "lines",
+      mask: "lines"
     });
     
-    const languageSplitRight  = SplitText.create(languagesRefRight.current, { type: 'words'});
-    const languageSplitLeft  = SplitText.create(languagesRefLeft.current, { type: 'words'});
+    const languageSplitRight  = SplitText.create(languagesRefRight.current, { type: 'words', mask: "lines"});
+    const languageSplitLeft  = SplitText.create(languagesRefLeft.current, { type: 'words', mask: "lines"});
 
     const timeline = gsap.timeline({
       scrollTrigger: {
         trigger: containerRef.current,
-        start: "top 60%", 
+        start: "top 70%", 
+        markers: true
       },
       onComplete: () => {
-        textSplitRight.revert();
-        textSplitLeft.revert();
+        textSplit.revert();
         languageSplitRight.revert();
         languageSplitLeft.revert();
+        descriptionSplit.revert();
       },
     });
 
-    gsap.set(imageRef.current, {
-      skewY: "var(--scroll-skew, 0deg)",
-    });
-
-    // timeline.from(imageRef.current, {
-    //   opacity: 0,
-    //   duration: 1,
-    //   ease: "power2.out",
+    // gsap.set(imageRef.current, {
+    //   skewY: "var(--scroll-skew, 0deg)",
     // });
-    timeline.fromTo(titleBanner.current, {
-      opacity: 0}, {opacity: 1, duration: 1, ease: "power1.out"}, "-=2");
-    timeline.fromTo(invertSide ? titleRefLeft.current : titleRefRight.current, {
-      x: invertSide ? -100 : 100, opacity: 0}, {x: 0, duration: 2, opacity: 1, ease: "power2.out"}, "-=1");
-    timeline.from(invertSide ? textSplitLeft.lines : textSplitRight.lines, {
+
+    timeline.from(imageRef.current, {
       opacity: 0,
-      x: invertSide ? -100 : 100,
+      duration: 1,
+      ease: "power2.out",
+    });
+    timeline.fromTo(titleBanner.current, {
+      opacity: 0}, {opacity: 1, duration: 1, ease: "power1.out"}, "-=2.5");
+    timeline.fromTo(invertSide ? titleRefLeft.current : titleRefRight.current, {
+      x: invertSide ? -100 : 100, opacity: 0}, {x: 0, duration: 2, opacity: 1, ease: "power2.out"});
+    timeline.from(textSplit.lines, {
+      opacity: 0,
+      y: 100,
       stagger: 0.2,
       duration: 2,
       ease: "power1.out",
-    }, '-=1.5');
+    }, '-=2');
+    timeline.from(descriptionSplit.lines, {
+      opacity: 0,
+      y: 100,
+      stagger: 0.2,
+      duration: 2,
+      ease: "power1.out",
+    }, '-=2.5');
     timeline.from(invertSide ? languageSplitLeft.words : languageSplitRight.words, {
       opacity: 0,
       y: 50,
@@ -128,9 +139,9 @@ const ProjectsA = ({title, description, imgHigh, imgLow, languageIndex, url, git
           <div className={styles.description} data-speed="1.1">
               <div className={styles.titleDescriptionWrap} ref={titleBanner}>
                 <h2 ref={invertSide ? titleRefLeft : titleRefRight } className={`${styles.rightSideTitle}`}>{title}</h2>
-                <p ref={invertSide ? textRefLeft : textRefRight}>{description}</p>
+                <p ref={textRef}>{description}</p>
               </div>
-              <div className={styles.descriptionContent}>
+              <div className={styles.descriptionContent} ref={descriptionRef}>
                 {content.split("\n").map((paragraph, i) => (
                   <p key={i}>{paragraph.trim()}</p>
                 ))}
@@ -158,7 +169,7 @@ function OtherProjects() {
         pin: true,
         onUpdate: self => {
           gsap.to(scrollable, {
-            y: -((scrollable.scrollHeight - window.innerHeight) * self.progress),
+            y: -((container.scrollHeight - window.innerHeight) * self.progress),
             overwrite: "auto"
           });
         }
@@ -170,7 +181,7 @@ function OtherProjects() {
 
   return (
     <section>
-         <div className={styles.otherProjectsSection} ref={containerRef}>
+      <div className={styles.otherProjectsSection} ref={containerRef}>
         <div className={styles.videoBackground}>
           <video autoPlay loop muted playsInline className={styles.video}>
             <source src={backgroundVideo} type="video/mp4" />
