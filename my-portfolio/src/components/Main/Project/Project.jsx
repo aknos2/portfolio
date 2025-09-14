@@ -1,47 +1,70 @@
 import styles from '../css/project.module.css';
 import { useState } from 'react';
-import { projects } from '../../../data/projects';
+import { mainProject } from '../../../data/projects';
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useRef } from 'react';
+import { SplitText } from 'gsap/all';
 
 function Project({currentProject, setCurrentProject}) {
-  const [isFirstContainter, setIsFirstContainer] = useState(true);
-  const totalProjects = projects.length;
-  const watchingProject = projects[currentProject];
+  const [isSliding, setIsSliding] = useState(false);
   const container = useRef();
+  const imageRef = useRef();
+  const textRef = useRef();
+
+  const watchingProject = mainProject[currentProject];
+  const totalPages = mainProject.length;
 
   useGSAP(() => {
-    if (!container.current) return;
-
-    if (isFirstContainter) {
       gsap.from(container.current, {
         opacity: 0,
         duration: 1,
         delay: 1.5,
         ease: "power2.out"
-      })
-      setIsFirstContainer(false);
-    }
+      });
+  }, []);
 
-     gsap.from(container.current, {
-        opacity: 0,
-        duration: 1,
-        delay: 0.5,
-        ease: "power2.out"
-      })
+  useGSAP(() => {
+    const textSplit = SplitText.create(textRef.current, {
+      type: "lines"
+    })
+
+     gsap.from(imageRef.current, {
+      opacity: 0,
+      duration: 2,
+      ease: "power2.out"
+    });
+    gsap.from(textSplit.lines, {
+      opacity: 0,
+      y: 20,
+      stagger: 0.3,
+      duration: 1.5,
+      ease: "expo.out",
+
+      onComplete: () => textSplit.revert()
+    });
   }, [currentProject]);
 
 
   const goToNextPage = () => {
-    if (currentProject < totalProjects - 1) {
-        setCurrentProject(prev => prev + 1);
+    if (isSliding) return;
+
+    if (currentProject < totalPages - 1) {
+      setIsSliding(true);
+      setCurrentProject(prev => prev + 1);
+
+      setTimeout(() => setIsSliding(false), 2000);
     }
   }
 
    const goToPreviousPage = () => {
+     if (isSliding) return;
+
     if (currentProject > 0) {
-        setCurrentProject(prev => prev - 1);
+      setIsSliding(true);
+      setCurrentProject(prev => prev - 1);
+
+      setTimeout(() => setIsSliding(false), 2000)
     }
   }
 
@@ -55,11 +78,12 @@ function Project({currentProject, setCurrentProject}) {
               <h2>{watchingProject.title}</h2>
             </div>
 
-            <div className={styles.imageWrap}>
+            <div className={styles.imageWrap} ref={imageRef}>
               <img src={watchingProject.img.high} 
                   alt={watchingProject.title}
                   srcSet={`${watchingProject.img.low} 480w, ${watchingProject.img.high} 1080w`}
                   sizes="(max-width: 600px) 480px, 1080px"
+                  className={currentProject === 2 ? styles.thirdImage : ""}
                   >
               </img>
               <a href={watchingProject.github} className={styles.github} target="_blank" rel="noopener noreferrer">
@@ -75,11 +99,11 @@ function Project({currentProject, setCurrentProject}) {
             </div>
 
             <div className={styles.description}>
-              <p>{watchingProject.description}</p>
+              <p ref={textRef}>{watchingProject.description}</p>
             </div>
           </div>
           
-          {currentProject < totalProjects - 1 && (
+          {currentProject < totalPages - 1 && (
             <button className={styles.nextArrow} onClick={goToNextPage} aria-label="Next page">
               <svg height="24px" viewBox="0 -960 960 960" width="25px" fill="#ffffffff">
                 <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z"/>
@@ -87,7 +111,7 @@ function Project({currentProject, setCurrentProject}) {
             </button>
           )}
           {currentProject > 0 && (
-            <button className={styles.previousArrow} onClick={goToPreviousPage} ariaLabel="Previous page">
+            <button className={styles.previousArrow} onClick={goToPreviousPage} aria-label="Previous page">
               <svg height="24px" viewBox="0 -960 960 960" width="25px" fill="#ffffffff">
                 <path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z"/>
               </svg>

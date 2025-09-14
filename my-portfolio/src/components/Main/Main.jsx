@@ -11,9 +11,8 @@ import { SplitText } from "gsap/SplitText";
 import { useRef } from 'react';
 import OtherProjects from './Project/OtherProjects';
 
-const ProjectNest = ({isProject, watchingProject, setCurrentProject, currentProject}) => {
+const ProjectNest = ({isProject, setCurrentProject, currentProject}) => {
   const text = useRef();
-  const title = useRef();
 
   useGSAP(() => {
     const splitText = SplitText.create(text.current, {
@@ -27,12 +26,6 @@ const ProjectNest = ({isProject, watchingProject, setCurrentProject, currentProj
       ease: "power2.out",
       onComplete: () => splitText.revert()
     })
-    gsap.from(title.current, {
-      opacity: 0,
-      duration: 1,
-      delay: 1.5,
-      ease: "power2.out"
-    })
   },  [isProject]);
 
 
@@ -40,7 +33,7 @@ const ProjectNest = ({isProject, watchingProject, setCurrentProject, currentProj
         <>
           <div className='project-background-title'><h1 ref={text}>PROJECTS</h1></div>
           <div className="project-wrap">
-            <Languages watchingProject={watchingProject} title={title}/>
+            <Languages/>
             <Project currentProject={currentProject} setCurrentProject={setCurrentProject}/>
           </div>
          </>

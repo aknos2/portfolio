@@ -1,8 +1,7 @@
 .container {
   display: flex;
-  flex-wrap: wrap;
   width: 100vw;
-  height: 130vh;
+  height: 100vh;
   z-index: 2;
   position: relative;
   font-size: clamp(1rem, 2vw, 1.3rem);

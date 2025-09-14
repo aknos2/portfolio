@@ -3,23 +3,24 @@ import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { SplitText } from "gsap/SplitText";
 import { useRef } from 'react';
+import { mainProject } from '../../../data/projects';
 
 gsap.registerPlugin(useGSAP, SplitText);
 
-const Nested = ({ watchingProject, title }) => {
+const Nested = () => {
   const list = useRef();
 
-  // Gather technologies, filter out falsy values
+  //Gather technologies, filter out falsy values
   const technologies = [
-    watchingProject.frontend,
-    watchingProject.backend,
-    watchingProject.database,
-    watchingProject.authentication
+    mainProject[0].frontend,
+    mainProject[0].backend,
+    mainProject[0].database,
+    mainProject[0].authentication
   ].filter(Boolean);
 
   useGSAP(() => {
     // Target only spans inside li (React still owns the li elements)
-    const split = SplitText.create(list.current.querySelectorAll("span"), {
+    const split = SplitText.create(list.current, {
       type: "words",
     });
 
@@ -28,18 +29,19 @@ const Nested = ({ watchingProject, title }) => {
       y: 20,
       stagger: 0.1,
       duration: 2,
+      delay:1.5,
       ease: "power2.out",
       onComplete: () => split.revert()
     });
 
-  }, { dependencies: [watchingProject.id] });
+  }, []);
 
   return (
-    <div className={styles.splitText} ref={title}>
+    <div className={styles.splitText}  ref={list}>
       <h3>Built with</h3>
-      <ul ref={list}>
+      <ul>
         {technologies.map((tech, index) => (
-          <li key={`${watchingProject.id}-${index}`}>
+          <li key={`${technologies.id}-${index}`}>
             <span>{tech}</span> {/* Only animate span, not li */}
           </li>
         ))}
@@ -48,10 +50,10 @@ const Nested = ({ watchingProject, title }) => {
   );
 }
 
-function Languages({ watchingProject, title }) {
+function Languages() {
   return (
     <div className={styles.container}>
-      <Nested watchingProject={watchingProject} title={title}/>
+      <Nested />
     </div>
   )
 }

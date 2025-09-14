@@ -1,5 +1,9 @@
 import doggoBlogHigh from '../assets/projects/doggo-high.png'
 import doggoBlogLow from '../assets/projects/doggo-low.png';
+import doggoBlog2High from '../assets/projects/doggo2-high.webp'
+import doggoBlog2Low from '../assets/projects/doggo2-low.png';
+import doggoBlog3High from '../assets/projects/doggo3-high.webp'
+import doggoBlog3Low from '../assets/projects/doggo3-low.png';
 import memoryCardHigh from '../assets/projects/memoryCard-high.webp';
 import memoryCardLow from '../assets/projects/memoryCard-low.webp';
 import fileUploaderHigh from '../assets/projects/fileuploader-high.png'
@@ -7,6 +11,46 @@ import fileUploaderLow from '../assets/projects/fileuploader-low.png';
 import battleshipHigh from '../assets/projects/battleship-high.png';
 import battleshipLow from '../assets/projects/battleship-low.png';
 
+
+export const mainProject = [
+  {
+    id: 1,
+    title: "Doggo Blog",
+    description: "Blog about a Corgi dog. You can see articles, create an account, and post and like comments.",
+    frontend: "Javascript, React",
+    backend: "Node.js, Express",
+    database: "PostgreSQL, Prisma",
+    authentication: "Passport.js, JSON Web Token",
+    github: "https://github.com/aknos2/blogAPI",
+    url: "https://doggo-blog.vercel.app/",
+    img: {
+      high: doggoBlogHigh,
+      low: doggoBlogLow
+    }
+  },
+  {
+    id: 2,
+    title: "Doggo Blog",
+    github: "https://github.com/aknos2/blogAPI",
+    url: "https://doggo-blog.vercel.app/",
+    img: {
+       high: doggoBlog2High,
+        low: doggoBlog2Low
+    },
+    description: "You can easily filter articles through a filter menu by choosing dates, keywords, or tags.",
+  },
+  {
+    id: 3,
+    title: "Doggo Blog",
+    github: "https://github.com/aknos2/blogAPI",
+    url: "https://doggo-blog.vercel.app/",
+    img: {
+      high: doggoBlog3High,
+      low: doggoBlog3Low
+    },
+    description: "You can select an image for your avatar and comment on the chat like a social app chat."
+  }
+]
 
 export const projects = [ 
   {
@@ -22,9 +66,10 @@ export const projects = [
     img: {
       high: doggoBlogHigh,
       low: doggoBlogLow
-    }
+    },
+
   },
-   {
+  {
     id: 2,
     title: "Memory Card Game",
     description: "Card game which you have to choose if the randomly generated cat photo alredy appeared or not.",

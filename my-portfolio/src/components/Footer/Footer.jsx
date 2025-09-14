@@ -1,3 +1,4 @@
+import ShapeDivider from '../ShapeDivider';
 import styles from './footer.module.css';
 
 function Footer() {
@@ -10,6 +11,7 @@ function Footer() {
         <div className={styles.lowerPart}>
           <a a href="mailto:eltonryuji@gmail.com">eltonryuji@gmail.com</a>
         </div>
+      <ShapeDivider />
       </div>
       <div className={styles.copyrightWrap}>
           <small>Built by Elton Tomiyoshi</small>

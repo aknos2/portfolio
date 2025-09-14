@@ -4,7 +4,7 @@ function ShapeDivider({ turnLightRef, className }) {
     height: "clamp(3rem, 25vh, 15rem)",
     width: "100%",
     backgroundColor: "var(--shapeDivider-bg-color)",
-    clipPath: "ellipse(70% 70% at 50% 0%)",
+    clipPath: "ellipse(70% 70% at 50% 100%)",
     marginTop: "-1rem",
     zIndex: -1,
   };

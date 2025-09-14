@@ -2,10 +2,10 @@
   --body-bg-color: rgb(0, 0, 0);
   --header-text-color: white;
   --description-color: white;
-  --shapeDivider-bg-color: rgb(0, 0, 0);
+  --shapeDivider-bg-color: rgba(94, 93, 67, 0.723);
   --projectsTitleBanner-bg: rgba(68, 67, 67, 0.489);
   --otherProjectsDescription-color: rgb(255, 254, 254);
-  --footerCopyright-bg: rgba(68, 67, 67, 0.141);
+  --footerCopyright-bg: rgb(0, 0, 0);
 }
 
 @font-face {

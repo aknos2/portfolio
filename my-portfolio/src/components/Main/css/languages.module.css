@@ -17,5 +17,8 @@
   .container {
     width: 20rem;
     justify-content: flex-start;
+    align-items: start;
+    text-align: start;
+    margin-left: 1rem;
   }
 }
