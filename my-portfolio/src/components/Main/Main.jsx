@@ -10,6 +10,9 @@ import { useGSAP } from "@gsap/react";
 import { SplitText } from "gsap/SplitText";
 import { useRef } from 'react';
 import OtherProjects from './Project/OtherProjects';
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const ProjectNest = ({isProject, setCurrentProject, currentProject}) => {
   const text = useRef();
@@ -42,8 +45,24 @@ const ProjectNest = ({isProject, setCurrentProject, currentProject}) => {
 
 function Main({ isProject }) {
   const [currentProject, setCurrentProject] = useState(0);
+  const scrollDownMessRef = useRef();
 
   const watchingProject = projects[currentProject];
+
+  useGSAP(() => {
+    if (isProject && scrollDownMessRef.current) {
+      gsap.to(scrollDownMessRef.current, {
+        opacity: 0,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: scrollDownMessRef.current,
+          start: "top 80%",
+          end: "top 20%",
+          scrub: true,
+        }
+      });
+    }
+  }, [isProject]); 
 
   return (
     <section>
@@ -54,10 +73,9 @@ function Main({ isProject }) {
         ) : (
           <>
           <ProjectNest isProject={isProject} watchingProject={watchingProject} setCurrentProject={setCurrentProject} currentProject={currentProject}/>
-          <div className='scroll-down-message'>
+          <div className='scroll-down-message' ref={scrollDownMessRef}>
             <div className="scrolldown-left"></div>
             <p>other projects</p>
-            <div className="scrolldown-right"></div>
           </div>
           </>
         )}

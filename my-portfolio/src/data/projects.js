@@ -16,7 +16,7 @@ export const mainProject = [
   {
     id: 1,
     title: "Doggo Blog",
-    description: "Blog about a Corgi dog. You can see articles, create an account, and post and like comments.",
+    description: "A blog about a Corgi dog, where users can browse articles, create accounts, and interact by posting and liking comments.",
     frontend: "Javascript, React",
     backend: "Node.js, Express",
     database: "PostgreSQL, Prisma",
@@ -83,9 +83,9 @@ export const projects = [
       high: memoryCardHigh,
       low: memoryCardLow
     },
-    content: `I created this game as a mobile app game in mind. A game which can be simple, short, but addictive.\n
-              The theme I chose was cats, but the idea could be implemented in any other topic.\n
-              I still want to implement more things like special stages which the image will move, or other mini-games like counting the number of cats, like WarioWare.`
+    content: `I designed this game with mobile play in mind. A simple, short, yet addictive game.\n
+              The theme I chose was cats, but the concept could easily be adapted to other themes.\n
+              Future plans include adding more variety, such as special stages where images move, or fun mini-games like counting cats, inspired by WarioWare-style gameplay.`
   },
   {
     id: 3,

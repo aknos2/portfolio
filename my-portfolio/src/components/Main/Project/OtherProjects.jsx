@@ -59,7 +59,6 @@ const ProjectsA = ({title, description, imgHigh, imgLow, languageIndex, url, git
       scrollTrigger: {
         trigger: containerRef.current,
         start: "top 70%", 
-        markers: true
       },
       onComplete: () => {
         textSplit.revert();
@@ -102,7 +101,7 @@ const ProjectsA = ({title, description, imgHigh, imgLow, languageIndex, url, git
       stagger: 0.1,
       duration: 2,
       ease: "power2.out",
-    }, '-=2');
+    }, '-=2.5');
     
   }, []);
 
@@ -110,7 +109,7 @@ const ProjectsA = ({title, description, imgHigh, imgLow, languageIndex, url, git
     <section>
 
       <div className={`${styles.container} ${invertSide ? styles.invertSideContainer : ""}`} ref={containerRef}>
-          <div className={styles.imageWrap} ref={imageRef}>
+          <div className={styles.imageWrap} ref={imageRef} data-speed="1">
             <img src={imgHigh} 
                 className={`${invertSide ? styles.invertImg : ""}` + " skew-image"}
                 srcSet={`${imgLow} 480w, ${imgHigh} 1080w`}
@@ -123,7 +122,7 @@ const ProjectsA = ({title, description, imgHigh, imgLow, languageIndex, url, git
                 <GithubIcon link={github}/>
               </div>
 
-              <div className={`${styles.languages} ${invertSide ? styles.leftSideUl : styles.rightSideUl}`} ref={invertSide ? languagesRefLeft : languagesRefRight} >
+              <div className={`${styles.languages} ${invertSide ? styles.leftSideUl : styles.rightSideUl}`} ref={invertSide ? languagesRefLeft : languagesRefRight} data-speed="1">
                 <h3>Built with</h3>
                 <ul className={styles.rightSideUl}>
                   {languageIndex.languages.map((language, idx) => (
@@ -136,7 +135,7 @@ const ProjectsA = ({title, description, imgHigh, imgLow, languageIndex, url, git
             </div>
           </div>
 
-          <div className={styles.description} >
+          <div className={styles.description} data-speed="1.08">
               <div className={styles.titleDescriptionWrap} ref={titleBanner}>
                 <h2 ref={invertSide ? titleRefLeft : titleRefRight } className={`${styles.rightSideTitle}`}>{title}</h2>
                 <p ref={textRef}>{description}</p>
