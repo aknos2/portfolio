@@ -44,109 +44,133 @@ const ProjectsA = ({title, description, imgHigh, imgLow, languageIndex, url, git
 
   useGSAP(() => {
     const textSplit = SplitText.create(textRef.current, {
-      type: "lines",
-      mask: "lines"
+      type: "lines"
     });
     const descriptionSplit = SplitText.create(descriptionRef.current, {
-      type: "lines",
-      mask: "lines"
+      type: "lines"
     });
-    
-    const languageSplitRight  = SplitText.create(languagesRefRight.current, { type: 'words', mask: "lines"});
-    const languageSplitLeft  = SplitText.create(languagesRefLeft.current, { type: 'words', mask: "lines"});
+    const languageSplit = SplitText.create(
+      invertSide ? languagesRefLeft.current : languagesRefRight.current, 
+      { type: 'words' }
+    );
+
+    // Set initial states 
+    gsap.set([
+      imageRef.current,
+      titleBanner.current,
+      invertSide ? titleRefLeft.current : titleRefRight.current,
+      textSplit.lines,
+      descriptionSplit.lines,
+      languageSplit.words
+    ], {
+      opacity: 0
+    });
+
+    // Set initial transforms
+    gsap.set(invertSide ? titleRefLeft.current : titleRefRight.current, {
+      x: invertSide ? -50 : 50
+    });
+    gsap.set([textSplit.lines, descriptionSplit.lines], { y: 30 });
+    gsap.set(languageSplit.words, { y: 20 }); 
 
     const timeline = gsap.timeline({
       scrollTrigger: {
         trigger: containerRef.current,
-        start: "top 70%", 
+        start: "top 85%", 
+        end: "top 50%",  
+        toggleActions: "play none none reverse", // Better performance than scrub
       },
       onComplete: () => {
         textSplit.revert();
-        languageSplitRight.revert();
-        languageSplitLeft.revert();
         descriptionSplit.revert();
+        languageSplit.revert();
       },
     });
 
-    // gsap.set(imageRef.current, {
-    //   skewY: "var(--scroll-skew, 0deg)",
-    // });
-
-    timeline.from(imageRef.current, {
-      opacity: 0,
-      duration: 1,
-      ease: "power2.out",
-    });
-    timeline.fromTo(titleBanner.current, {
-      opacity: 0}, {opacity: 1, duration: 1, ease: "power1.out"}, "-=3");
-    timeline.fromTo(invertSide ? titleRefLeft.current : titleRefRight.current, {
-      x: invertSide ? -100 : 100, opacity: 0}, {x: 0, duration: 2, opacity: 1, ease: "power2.out"});
-    timeline.from(textSplit.lines, {
-      opacity: 0,
-      y: 100,
-      stagger: 0.2,
-      duration: 2,
-      ease: "power1.out",
-    }, '-=2');
-    timeline.from(descriptionSplit.lines, {
-      opacity: 0,
-      y: 100,
-      stagger: 0.2,
-      duration: 2,
-      ease: "power1.out",
-    }, '-=2.5');
-    timeline.from(invertSide ? languageSplitLeft.words : languageSplitRight.words, {
-      opacity: 0,
-      y: 50,
-      stagger: 0.1,
-      duration: 2,
-      ease: "power2.out",
-    }, '-=2.5');
+    timeline
+      .to(imageRef.current, {
+        opacity: 1,
+        duration: 0.8, 
+        ease: "power2.out",
+      })
+      .to(titleBanner.current, {
+        opacity: 1,
+        duration: 0.6,
+        ease: "power1.out"
+      }, "-=0.6")
+      .to(invertSide ? titleRefLeft.current : titleRefRight.current, {
+        x: 0,
+        opacity: 1,
+        duration: 1,
+        ease: "power2.out"
+      }, "-=0.4")
+      .to(textSplit.lines, {
+        opacity: 1,
+        y: 0,
+        stagger: 0.1,
+        duration: 0.8, 
+        ease: "power1.out",
+      }, '-=0.8')
+      .to(descriptionSplit.lines, {
+        opacity: 1,
+        y: 0,
+        stagger: 0.1,
+        duration: 0.8,
+        ease: "power1.out",
+      }, '-=0.6')
+      .to(languageSplit.words, {
+        opacity: 1,
+        y: 0,
+        stagger: 0.05, 
+        duration: 0.6,
+        ease: "power2.out",
+      }, '-=0.8');
     
   }, []);
 
   return (
     <section>
-
       <div className={`${styles.container} ${invertSide ? styles.invertSideContainer : ""}`} ref={containerRef}>
-          <div className={styles.imageWrap} ref={imageRef} data-speed="1">
-            <img src={imgHigh} 
-                className={`${invertSide ? styles.invertImg : ""}` + " skew-image"}
-                srcSet={`${imgLow} 480w, ${imgHigh} 1080w`}
-                sizes="(max-width: 600px) 480px, 1080px"
-                >
-            </img>
-            <div className={styles.languageLinkWrap}>
-              <div className={ `${styles.links} ${invertSide ? styles.invertLinks : ""}`}>
-                <WebsiteUrl link={url} />
-                <GithubIcon link={github}/>
-              </div>
+        <div className={styles.imageWrap} ref={imageRef} data-speed="1">
+          <img src={imgHigh} 
+              className={`${invertSide ? styles.invertImg : ""} skew-image`}
+              srcSet={`${imgLow} 480w, ${imgHigh} 1080w`}
+              sizes="(max-width: 600px) 480px, 1080px"
+              loading="lazy" // Add lazy loading for performance
+              />
+          <div className={styles.languageLinkWrap}>
+            <div className={`${styles.links} ${invertSide ? styles.invertLinks : ""}`}>
+              <WebsiteUrl link={url} />
+              <GithubIcon link={github}/>
+            </div>
 
-              <div className={`${styles.languages} ${invertSide ? styles.leftSideUl : styles.rightSideUl}`} ref={invertSide ? languagesRefLeft : languagesRefRight} data-speed="1">
-                <h3>Built with</h3>
-                <ul className={styles.rightSideUl}>
-                  {languageIndex.languages.map((language, idx) => (
-                    <li key={idx}>
-                      { invertSide ?  (<span>- {language}</span>) : (<span>{language} -</span>)}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+            <div className={`${styles.languages} ${invertSide ? styles.leftSideUl : styles.rightSideUl}`} 
+                 ref={invertSide ? languagesRefLeft : languagesRefRight} data-speed="1">
+              <h3>Built with</h3>
+              <ul className={styles.rightSideUl}>
+                {languageIndex.languages.map((language, idx) => (
+                  <li key={idx}>
+                    {invertSide ? <span>- {language}</span> : <span>{language} -</span>}
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
+        </div>
 
-          <div className={styles.description} data-speed="1.08">
-              <div className={styles.titleDescriptionWrap} ref={titleBanner}>
-                <h2 ref={invertSide ? titleRefLeft : titleRefRight } className={`${styles.rightSideTitle}`}>{title}</h2>
-                <p ref={textRef}>{description}</p>
-              </div>
-              <div className={styles.descriptionContent} ref={descriptionRef}>
-                {content.split("\n").map((paragraph, i) => (
-                  <p key={i}>{paragraph.trim()}</p>
-                ))}
-              </div>
-
+        <div className={styles.description} data-speed="1.08">
+          <div className={styles.titleDescriptionWrap} ref={titleBanner}>
+            <h2 ref={invertSide ? titleRefLeft : titleRefRight} className={styles.rightSideTitle}>
+              {title}
+            </h2>
+            <p ref={textRef}>{description}</p>
           </div>
+          <div className={styles.descriptionContent} ref={descriptionRef}>
+            {content.split("\n").map((paragraph, i) => (
+              <p key={i}>{paragraph.trim()}</p>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   )
@@ -158,6 +182,23 @@ function OtherProjects() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
+      // Batch animate all project containers at once for better performance
+      ScrollTrigger.batch(".project-container", {
+        onEnter: (elements) => {
+          gsap.fromTo(elements, {
+            opacity: 0,
+          }, {
+            opacity: 1,
+            duration: 0.8,
+            stagger: 0.2,
+            ease: "power2.out",
+            overwrite: "auto"
+          });
+        },
+        start: "top 85%",
+        once: true, // Only animate once for better performance
+      });
+
       const scrollable = scrollableRef.current;
       const container = containerRef.current;
 
@@ -168,8 +209,10 @@ function OtherProjects() {
         pin: true,
         onUpdate: self => {
           gsap.to(scrollable, {
-            y: -((container.scrollHeight - window.innerHeight) * self.progress),
-            overwrite: "auto"
+            y: -((scrollable.scrollHeight - window.innerHeight) * self.progress),
+            overwrite: "auto",
+            duration: 0.1, // Very short duration for smooth scrolling
+            ease: "none"
           });
         }
       });
@@ -177,6 +220,7 @@ function OtherProjects() {
 
     return () => ctx.revert();
   }, []);
+
 
   return (
     <section>

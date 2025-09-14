@@ -9,7 +9,6 @@ import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { SplitText } from "gsap/SplitText";
 import { useRef } from 'react';
-import OtherProjects from './Project/OtherProjects';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -79,7 +78,6 @@ function Main({ isProject }) {
           </div>
           </>
         )}
-        {/* <div className="partial-space"></div>  */}
       </div>
     </section>
   )
