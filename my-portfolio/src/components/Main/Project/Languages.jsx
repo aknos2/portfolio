@@ -7,8 +7,9 @@ import { mainProject } from '../../../data/projects';
 
 gsap.registerPlugin(useGSAP, SplitText);
 
-const Nested = () => {
-  const list = useRef();
+const Nested = ({isJapanese}) => {
+  const listRef = useRef();
+  const titleRef = useRef();
 
   //Gather technologies, filter out falsy values
   const technologies = [
@@ -19,8 +20,8 @@ const Nested = () => {
   ].filter(Boolean);
 
   useGSAP(() => {
-    // Target only spans inside li (React still owns the li elements)
-    const split = SplitText.create(list.current, {
+    // Only animate the list items, not the title
+    const split = SplitText.create(listRef.current, {
       type: "words",
     });
 
@@ -29,20 +30,29 @@ const Nested = () => {
       y: 20,
       stagger: 0.1,
       duration: 2,
-      delay:1.5,
+      delay: 1.5,
       ease: "power2.out",
       onComplete: () => split.revert()
     });
 
-  }, []);
+    // Separate animation for title - no SplitText
+    gsap.from(titleRef.current, {
+      opacity: 0,
+      y: 20,
+      duration: 1,
+      delay: 1.3,
+      ease: "power2.out"
+    });
+
+  }, [isJapanese]);
 
   return (
-    <div className={styles.splitText}  ref={list}>
-      <h3>Built with</h3>
-      <ul>
+    <div className={styles.splitText}>
+      <h3 ref={titleRef}>{isJapanese ? '使用技術' : 'Built with'}</h3>
+      <ul ref={listRef}>
         {technologies.map((tech, index) => (
           <li key={`${technologies.id}-${index}`}>
-            <span>{tech}</span> {/* Only animate span, not li */}
+            <span>{tech}</span>
           </li>
         ))}
       </ul>
@@ -50,10 +60,10 @@ const Nested = () => {
   );
 }
 
-function Languages() {
+function Languages({ isJapanese }) {
   return (
     <div className={styles.container}>
-      <Nested />
+      <Nested isJapanese={isJapanese}/>
     </div>
   )
 }

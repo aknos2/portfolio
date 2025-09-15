@@ -10,10 +10,11 @@ import { useGSAP } from "@gsap/react";
 import { SplitText } from "gsap/SplitText";
 import { useRef } from 'react';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useOutletContext } from 'react-router-dom';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const ProjectNest = ({isProject, setCurrentProject, currentProject}) => {
+const ProjectNest = ({isProject, setCurrentProject, currentProject, isJapanese}) => {
   const text = useRef();
 
   useGSAP(() => {
@@ -35,8 +36,11 @@ const ProjectNest = ({isProject, setCurrentProject, currentProject}) => {
         <>
           <div className='project-background-title'><h1 ref={text}>PROJECTS</h1></div>
           <div className="project-wrap">
-            <Languages/>
-            <Project currentProject={currentProject} setCurrentProject={setCurrentProject}/>
+            <Languages isJapanese={isJapanese}/>
+            <Project currentProject={currentProject} 
+              setCurrentProject={setCurrentProject} 
+              isJapanese={isJapanese}
+            />
           </div>
          </>
   )
@@ -45,6 +49,7 @@ const ProjectNest = ({isProject, setCurrentProject, currentProject}) => {
 function Main({ isProject }) {
   const [currentProject, setCurrentProject] = useState(0);
   const scrollDownMessRef = useRef();
+  const { isJapanese } = useOutletContext();
 
   const watchingProject = projects[currentProject];
 
@@ -68,10 +73,16 @@ function Main({ isProject }) {
       <div className="project-container" style={{ position: "relative" }}>
         <WaveContainer isProject={isProject}/>
         {!isProject ? (
-          <MyDescription/>
+          <MyDescription isJapanese={isJapanese}/>
         ) : (
           <>
-          <ProjectNest isProject={isProject} watchingProject={watchingProject} setCurrentProject={setCurrentProject} currentProject={currentProject}/>
+          <ProjectNest 
+            isProject={isProject} 
+            watchingProject={watchingProject} 
+            setCurrentProject={setCurrentProject} 
+            currentProject={currentProject} 
+            isJapanese={isJapanese}
+          />
           <div className='scroll-down-message' ref={scrollDownMessRef}>
             <div className="scrolldown-left"></div>
             <p>other projects</p>

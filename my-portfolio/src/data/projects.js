@@ -16,7 +16,10 @@ export const mainProject = [
   {
     id: 1,
     title: "Doggo Blog",
-    description: "A blog about a Corgi dog, where users can browse articles, create accounts, and interact by posting and liking comments.",
+    description: {
+      eng: "A blog about a Corgi dog, where users can browse articles, create accounts, and interact by posting and liking comments.",
+      jp: "コーギー犬をテーマにしたブログで、ユーザーは記事の閲覧、アカウント作成、コメントの投稿や「いいね」をすることが可能です。"
+    },
     frontend: "Javascript, React",
     backend: "Node.js, Express",
     database: "PostgreSQL, Prisma",
@@ -37,7 +40,10 @@ export const mainProject = [
        high: doggoBlog2High,
         low: doggoBlog2Low
     },
-    description: "You can easily filter articles through a filter menu by choosing dates, keywords, or tags.",
+    description: {
+      eng: "You can easily filter articles through a filter menu by choosing dates, keywords, or tags.",
+      jp: "フィルターメニューから日付、キーワード、タグを選択することで、記事を簡単に見つけます。"
+    }
   },
   {
     id: 3,
@@ -48,7 +54,10 @@ export const mainProject = [
       high: doggoBlog3High,
       low: doggoBlog3Low
     },
-    description: "You can select an image for your avatar and comment on the chat like a social app chat."
+    description: {
+      eng: "You can select an image for your avatar and comment on the chat like a social app chat.",
+      jp: "ソーシャルアプリのようにアバター画像を選択ができるし、チャット形式でコメントすることも可能です。"
+    }
   }
 ]
 

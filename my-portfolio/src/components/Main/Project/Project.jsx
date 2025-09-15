@@ -6,7 +6,7 @@ import { useGSAP } from "@gsap/react";
 import { useRef } from 'react';
 import { SplitText } from 'gsap/all';
 
-function Project({currentProject, setCurrentProject}) {
+function Project({currentProject, setCurrentProject, isJapanese}) {
   const [isSliding, setIsSliding] = useState(false);
   const container = useRef();
   const imageRef = useRef();
@@ -99,7 +99,9 @@ function Project({currentProject, setCurrentProject}) {
             </div>
 
             <div className={styles.description}>
-              <p ref={textRef}>{watchingProject.description}</p>
+              <p ref={textRef}>
+                {isJapanese ? watchingProject.description.jp : watchingProject.description.eng }
+              </p>
             </div>
           </div>
           

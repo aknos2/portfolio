@@ -1,4 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
+import { useState } from 'react';
 import styles from './header.module.css'
 import { gsap } from "gsap";
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -6,11 +7,25 @@ import { useRef } from 'react';
 
 gsap.registerPlugin(ScrollTrigger);
 
-function Header({handleProjects}) {
+function Header({handleProjects, isJapanese, setIsJapanese}) {
+  const [openLanguageMenu, setOpenLanguageMenu] = useState(false);
   const location = useLocation();
   const isProject = location.pathname === '/projects';
   const isAbout = location.pathname === '/about';
   const navRef = useRef();
+
+  const handleLanguageMenu = () => {
+    setOpenLanguageMenu(prev => !prev);
+  }
+
+  const handleLanguageSwitch = () => {
+    setIsJapanese(prev => !prev);
+    setOpenLanguageMenu(false);
+    // Force reload after state update
+    setTimeout(() => {
+      window.location.reload();
+    }, 100);
+  }
 
   return (
     <nav ref={navRef}>
@@ -24,6 +39,18 @@ function Header({handleProjects}) {
           </a>
         </div>
         <ul>
+          <li>
+            <div className={styles.languageWrap}>
+              <button onClick={handleLanguageMenu}>
+                language
+              </button>
+                <div className={`${styles.languageContent} ${openLanguageMenu ? styles.open : ''}`}>
+                  <button onClick={handleLanguageSwitch}>
+                    { isJapanese ? "ENG" : "日本語"}
+                  </button>
+                </div>
+            </div>
+          </li>
           <li>
             <button onClick={handleProjects}>
               {isProject ? 'home' : 'projects'}

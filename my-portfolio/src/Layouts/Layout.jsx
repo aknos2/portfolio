@@ -8,6 +8,7 @@ function Layout() {
   const location = useLocation();
   const navigate = useNavigate();
   const [clickDisabled, setClickDisabled] = useState(false);
+  const [isJapanese, setIsJapanese] = useState(false);
 
   const isProject = location.pathname === '/projects';
 
@@ -28,9 +29,13 @@ function Layout() {
 
   return (
     <div className="app-container"> {/* Add wrapper to maintain structure */}
-      <Header handleProjects={handleProjects} />
+      <Header 
+        handleProjects={handleProjects} 
+        isJapanese={isJapanese}
+        setIsJapanese={setIsJapanese}
+      />
       <main>
-       <Outlet />
+       <Outlet context={{isJapanese}} />
       </main>
     </div>
   );

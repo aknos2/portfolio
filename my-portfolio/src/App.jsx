@@ -1,5 +1,5 @@
 import Main from './components/Main/Main';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useOutletContext } from 'react-router-dom';
 import OtherProjects from './components/Main/Project/OtherProjects';
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -14,6 +14,7 @@ function App() {
   const isProject = location.pathname === '/projects';
   const smoothWrapper = useRef();
   const smoothContent = useRef();
+  const isJapanese = useOutletContext();
 
   gsap.registerEffect({
     name: "skewOnScroll",
@@ -50,8 +51,7 @@ function App() {
         <Main isProject={isProject} />
             {isProject && (
               <>
-              {/* <div className="partial-space"></div> */}
-              <OtherProjects />
+              <OtherProjects isJapanese={isJapanese}/>
               <Footer />
               </>
             )}

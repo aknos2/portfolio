@@ -31,7 +31,7 @@ const WebsiteUrl = ({link}) => {
   )
 }
 
-const ProjectsA = ({title, description, imgHigh, imgLow, languageIndex, url, github, invertSide=false, content}) => {
+const ProjectsA = ({title, description, imgHigh, imgLow, languageIndex, url, github, invertSide=false, content, isJapanese}) => {
   const containerRef = useRef();
   const titleRefRight = useRef();
   const titleRefLeft = useRef();
@@ -126,7 +126,7 @@ const ProjectsA = ({title, description, imgHigh, imgLow, languageIndex, url, git
         ease: "power2.out",
       }, '-=0.8');
     
-  }, []);
+  }, [isJapanese]);
 
   return (
     <section>
@@ -146,7 +146,7 @@ const ProjectsA = ({title, description, imgHigh, imgLow, languageIndex, url, git
 
             <div className={`${styles.languages} ${invertSide ? styles.leftSideUl : styles.rightSideUl}`} 
                  ref={invertSide ? languagesRefLeft : languagesRefRight} data-speed="1">
-              <h3>Built with</h3>
+              <h3>{isJapanese ? '使用技術' : 'Built with'}</h3>
               <ul className={styles.rightSideUl}>
                 {languageIndex.languages.map((language, idx) => (
                   <li key={idx}>
@@ -176,7 +176,7 @@ const ProjectsA = ({title, description, imgHigh, imgLow, languageIndex, url, git
   )
 }
 
-function OtherProjects() {
+function OtherProjects({ isJapanese }) {
   const containerRef = useRef(null);
   const scrollableRef = useRef(null);
 
@@ -247,6 +247,7 @@ function OtherProjects() {
             imgLow={projects[1].img.low}
             languageIndex={projects[1]}
             content={projects[1].content}
+            isJapanese={isJapanese}
           />
           <ProjectsA 
             title={projects[2].title}
@@ -257,6 +258,7 @@ function OtherProjects() {
             imgLow={projects[2].img.low}
             languageIndex={projects[2]}
             content={projects[2].content}
+            isJapanese={isJapanese}
             invertSide
           />
           <ProjectsA 
@@ -268,6 +270,7 @@ function OtherProjects() {
             imgLow={projects[3].img.low}
             languageIndex={projects[3]}
             content={projects[3].content}
+            isJapanese={isJapanese}
           />
         
         </div>

@@ -7,13 +7,15 @@ import SmallBubbles from "../Animations/BubblesSmall";
 
 gsap.registerPlugin(useGSAP, SplitText);
 
-function MyDescription() {
+function MyDescription({isJapanese}) {
   const containerRef = useRef(null);
   const firstTextRef = useRef(null);
   const secondTextRef = useRef(null);
 
   const firstText = "Hello, I'm a front-end developer and designer";
+  const firstTextJP = "Hello、フロントエンド開発者兼デザイナーです";
   const secondText = "My focus is on building artistic, user-friendly, and efficient interfaces";
+  const secondTextJP = "直感的に使える、美しく効率的なインターフェースを作ることを目指しています";
 
   useGSAP(() => {
     // Create SplitText instances for both text elements
@@ -95,10 +97,10 @@ function MyDescription() {
     <div ref={containerRef} className={styles.container}>
       <SmallBubbles />
       <span ref={firstTextRef} className={styles.typingEffect}>
-        {firstText}
+        {isJapanese ? firstTextJP :firstText}
       </span>
       <span ref={secondTextRef} className={styles.typingEffect}>
-        {secondText}
+        {isJapanese ? secondTextJP : secondText}
       </span>
     </div>
     </>
