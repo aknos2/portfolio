@@ -5,12 +5,14 @@ import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useRef } from 'react';
 import { SplitText } from 'gsap/all';
+import { useTranslation } from 'react-i18next';
 
-function Project({currentProject, setCurrentProject, isJapanese}) {
+function Project({currentProject, setCurrentProject }) {
   const [isSliding, setIsSliding] = useState(false);
   const container = useRef();
   const imageRef = useRef();
   const textRef = useRef();
+  const { i18n } = useTranslation();
 
   const watchingProject = mainProject[currentProject];
   const totalPages = mainProject.length;
@@ -100,7 +102,7 @@ function Project({currentProject, setCurrentProject, isJapanese}) {
 
             <div className={styles.description}>
               <p ref={textRef}>
-                {isJapanese ? watchingProject.description.jp : watchingProject.description.eng }
+                {watchingProject.description[i18n.language] || watchingProject.description.en}
               </p>
             </div>
           </div>

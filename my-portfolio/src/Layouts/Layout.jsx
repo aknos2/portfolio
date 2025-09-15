@@ -1,6 +1,5 @@
 import { Outlet } from 'react-router-dom'
 import Header from '../components/Header/Header.jsx'
-import ShapeDivider from '../components/ShapeDivider.jsx'
 import { useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 
@@ -8,7 +7,6 @@ function Layout() {
   const location = useLocation();
   const navigate = useNavigate();
   const [clickDisabled, setClickDisabled] = useState(false);
-  const [isJapanese, setIsJapanese] = useState(false);
 
   const isProject = location.pathname === '/projects';
 
@@ -31,11 +29,9 @@ function Layout() {
     <div className="app-container"> {/* Add wrapper to maintain structure */}
       <Header 
         handleProjects={handleProjects} 
-        isJapanese={isJapanese}
-        setIsJapanese={setIsJapanese}
       />
       <main>
-       <Outlet context={{isJapanese}} />
+       <Outlet />
       </main>
     </div>
   );

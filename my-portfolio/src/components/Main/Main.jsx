@@ -10,11 +10,10 @@ import { useGSAP } from "@gsap/react";
 import { SplitText } from "gsap/SplitText";
 import { useRef } from 'react';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useOutletContext } from 'react-router-dom';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const ProjectNest = ({isProject, setCurrentProject, currentProject, isJapanese}) => {
+const ProjectNest = ({isProject, setCurrentProject, currentProject}) => {
   const text = useRef();
 
   useGSAP(() => {
@@ -36,10 +35,9 @@ const ProjectNest = ({isProject, setCurrentProject, currentProject, isJapanese})
         <>
           <div className='project-background-title'><h1 ref={text}>PROJECTS</h1></div>
           <div className="project-wrap">
-            <Languages isJapanese={isJapanese}/>
+            <Languages/>
             <Project currentProject={currentProject} 
               setCurrentProject={setCurrentProject} 
-              isJapanese={isJapanese}
             />
           </div>
          </>
@@ -49,7 +47,6 @@ const ProjectNest = ({isProject, setCurrentProject, currentProject, isJapanese})
 function Main({ isProject }) {
   const [currentProject, setCurrentProject] = useState(0);
   const scrollDownMessRef = useRef();
-  const { isJapanese } = useOutletContext();
 
   const watchingProject = projects[currentProject];
 
@@ -73,7 +70,7 @@ function Main({ isProject }) {
       <div className="project-container" style={{ position: "relative" }}>
         <WaveContainer isProject={isProject}/>
         {!isProject ? (
-          <MyDescription isJapanese={isJapanese}/>
+          <MyDescription/>
         ) : (
           <>
           <ProjectNest 
@@ -81,7 +78,6 @@ function Main({ isProject }) {
             watchingProject={watchingProject} 
             setCurrentProject={setCurrentProject} 
             currentProject={currentProject} 
-            isJapanese={isJapanese}
           />
           <div className='scroll-down-message' ref={scrollDownMessRef}>
             <div className="scrolldown-left"></div>

@@ -3,11 +3,12 @@ import { useGSAP } from "@gsap/react";
 import { ScrollSmoother, SplitText } from "gsap/all";
 import { ScrollTrigger } from "gsap/all";
 import gsap from "gsap";
-import { useEffect, useLayoutEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { projects } from "../../../data/projects";
 import backgroundVideo from '../../../assets/underwater.mp4'
 import BubbleOverlay from "./BubbleOverlay";
 import Footer from "../../Footer/Footer";
+import { useTranslation } from "react-i18next";
 
 gsap.registerPlugin(SplitText, ScrollTrigger, ScrollSmoother);
 
@@ -31,7 +32,7 @@ const WebsiteUrl = ({link}) => {
   )
 }
 
-const ProjectsA = ({title, description, imgHigh, imgLow, languageIndex, url, github, invertSide=false, content, isJapanese}) => {
+const ProjectsA = ({title, description, imgHigh, imgLow, languageIndex, url, github, invertSide=false, content}) => {
   const containerRef = useRef();
   const titleRefRight = useRef();
   const titleRefLeft = useRef();
@@ -41,6 +42,7 @@ const ProjectsA = ({title, description, imgHigh, imgLow, languageIndex, url, git
   const imageRef = useRef();
   const titleBanner = useRef();
   const descriptionRef = useRef();
+  const { t } = useTranslation();
 
   useGSAP(() => {
     const textSplit = SplitText.create(textRef.current, {
@@ -126,7 +128,7 @@ const ProjectsA = ({title, description, imgHigh, imgLow, languageIndex, url, git
         ease: "power2.out",
       }, '-=0.8');
     
-  }, [isJapanese]);
+  }, []);
 
   return (
     <section>
@@ -146,7 +148,7 @@ const ProjectsA = ({title, description, imgHigh, imgLow, languageIndex, url, git
 
             <div className={`${styles.languages} ${invertSide ? styles.leftSideUl : styles.rightSideUl}`} 
                  ref={invertSide ? languagesRefLeft : languagesRefRight} data-speed="1">
-              <h3>{isJapanese ? '使用技術' : 'Built with'}</h3>
+              <h3>{t('built_with')}</h3>
               <ul className={styles.rightSideUl}>
                 {languageIndex.languages.map((language, idx) => (
                   <li key={idx}>
@@ -176,9 +178,10 @@ const ProjectsA = ({title, description, imgHigh, imgLow, languageIndex, url, git
   )
 }
 
-function OtherProjects({ isJapanese }) {
+function OtherProjects() {
   const containerRef = useRef(null);
   const scrollableRef = useRef(null);
+  const { i18n } = useTranslation();
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -240,37 +243,34 @@ function OtherProjects({ isJapanese }) {
           {/* <div className="partial-space"></div> */}
           <ProjectsA 
             title={projects[1].title}
-            description={projects[1].description}
+            description={projects[1].description[i18n.language] || projects[1].description.en}
             url={projects[1].url}
             github={projects[1].github}
             imgHigh={projects[1].img.high}
             imgLow={projects[1].img.low}
             languageIndex={projects[1]}
-            content={projects[1].content}
-            isJapanese={isJapanese}
+            content={projects[1].content[i18n.language] || projects[1].content.en}
           />
           <ProjectsA 
             title={projects[2].title}
-            description={projects[2].description}
+            description={projects[2].description[i18n.language] || projects[2].description.en}
             url={projects[2].url}
             github={projects[2].github}
             imgHigh={projects[2].img.high}
             imgLow={projects[2].img.low}
             languageIndex={projects[2]}
-            content={projects[2].content}
-            isJapanese={isJapanese}
+            content={projects[2].content[i18n.language] || projects[2].content.en}
             invertSide
           />
           <ProjectsA 
             title={projects[3].title}
-            description={projects[3].description}
+            description={projects[3].description[i18n.language] || projects[3].description.en}
             url={projects[3].url}
             github={projects[3].github}
             imgHigh={projects[3].img.high}
             imgLow={projects[3].img.low}
             languageIndex={projects[3]}
-            content={projects[3].content}
-            isJapanese={isJapanese}
+            content={projects[3].content[i18n.language] || projects[3].content.en}
           />
         
         </div>

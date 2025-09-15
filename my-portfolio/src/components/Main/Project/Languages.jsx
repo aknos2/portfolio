@@ -4,10 +4,12 @@ import { useGSAP } from "@gsap/react";
 import { SplitText } from "gsap/SplitText";
 import { useRef } from 'react';
 import { mainProject } from '../../../data/projects';
+import { useTranslation } from 'react-i18next';
 
 gsap.registerPlugin(useGSAP, SplitText);
 
 const Nested = ({isJapanese}) => {
+  const { t } = useTranslation();
   const listRef = useRef();
   const titleRef = useRef();
 
@@ -48,10 +50,10 @@ const Nested = ({isJapanese}) => {
 
   return (
     <div className={styles.splitText}>
-      <h3 ref={titleRef}>{isJapanese ? '使用技術' : 'Built with'}</h3>
+      <h3 ref={titleRef}>{t('built_with')}</h3>
       <ul ref={listRef}>
         {technologies.map((tech, index) => (
-          <li key={`${technologies.id}-${index}`}>
+          <li key={`${tech}-${index}`}>
             <span>{tech}</span>
           </li>
         ))}

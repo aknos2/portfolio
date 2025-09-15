@@ -4,14 +4,18 @@ import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { SplitText } from "gsap/SplitText";
 import SmallBubbles from "../Animations/BubblesSmall";
+import { useTranslation } from "react-i18next";
 
 gsap.registerPlugin(useGSAP, SplitText);
 
-function MyDescription({isJapanese}) {
+function MyDescription() {
   const containerRef = useRef(null);
   const firstTextRef = useRef(null);
   const secondTextRef = useRef(null);
+  const { t } = useTranslation();
 
+  const firstTextKey = 'myDescription.firstText';
+  const secondTextKey = 'myDescription.secondText';
   const firstText = "Hello, I'm a front-end developer and designer";
   const firstTextJP = "Hello、フロントエンド開発者兼デザイナーです";
   const secondText = "My focus is on building artistic, user-friendly, and efficient interfaces";
@@ -97,10 +101,10 @@ function MyDescription({isJapanese}) {
     <div ref={containerRef} className={styles.container}>
       <SmallBubbles />
       <span ref={firstTextRef} className={styles.typingEffect}>
-        {isJapanese ? firstTextJP :firstText}
+          {t(firstTextKey)}
       </span>
       <span ref={secondTextRef} className={styles.typingEffect}>
-        {isJapanese ? secondTextJP : secondText}
+         {t(secondTextKey)}
       </span>
     </div>
     </>
