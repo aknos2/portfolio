@@ -9,6 +9,7 @@ import backgroundVideo from '../../../assets/underwater.mp4'
 import BubbleOverlay from "./BubbleOverlay";
 import Footer from "../../Footer/Footer";
 import { useTranslation } from "react-i18next";
+import Slider from "./Slider";
 
 gsap.registerPlugin(SplitText, ScrollTrigger, ScrollSmoother);
 
@@ -274,6 +275,8 @@ function OtherProjects() {
           />
         
         </div>
+        <Slider />
+
       </div>
     </section>
     

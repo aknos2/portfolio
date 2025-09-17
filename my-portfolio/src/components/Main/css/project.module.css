@@ -4,13 +4,13 @@
 }
 
 .container {
-  width: clamp(22rem, 45vw, 60rem);
+  width: clamp(22rem, 45vw, 58rem);
   height: clamp(25rem 70vh 65rem);
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 0 0.5rem;
-  font-size: clamp(1.3rem, 2vw, 5rem);
+  font-size: clamp(1.3rem, 1.6vw, 2em);
   transform-style: preserve-3d;
 }
 
@@ -103,7 +103,7 @@
   padding: 0.5rem;
 }
 .github svg{
-  width: clamp(1rem, 3vw, 3rem);
+  width: clamp(1.5rem, 3vw, 3rem);
   cursor: pointer;
 }
 .github svg:hover{
@@ -112,14 +112,18 @@
 
 .newTab {
   position: absolute;
-  bottom: 0;
+  top: 0;
   right: 0;
-  padding: 0.5rem 0;
-  transform: translateY(100%);
+  padding: 0.5rem;
+  transform: translateY(-100%);
   fill: rgb(255, 255, 255) !important;
+  background-color: rgba(2, 2, 2, 0.597);
+  height: fit-content;
+  width: fit-content;
+  border-radius: 10px;
 }
 .newTab svg {
-  width: clamp(1rem, 3vw, 3rem);
+  width: clamp(1.5rem, 3vw, 3rem);
 }
 .newTab svg:hover{
   fill:rgb(221, 27, 27);

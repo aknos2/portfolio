@@ -16,10 +16,6 @@ function MyDescription() {
 
   const firstTextKey = 'myDescription.firstText';
   const secondTextKey = 'myDescription.secondText';
-  const firstText = "Hello, I'm a front-end developer and designer";
-  const firstTextJP = "Hello、フロントエンド開発者兼デザイナーです";
-  const secondText = "My focus is on building artistic, user-friendly, and efficient interfaces";
-  const secondTextJP = "直感的に使える、美しく効率的なインターフェースを作ることを目指しています";
 
   useGSAP(() => {
     // Create SplitText instances for both text elements

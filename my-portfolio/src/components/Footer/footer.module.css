@@ -33,7 +33,7 @@ small {
 .copyrightWrap {
   text-align: end;
   padding-right: 1rem;
-  font-size: smaller;
+  font-size: clamp(0.6rem, 2vw, 1rem);
   background: var(--footerCopyright-bg);
   border-top: 0.5px solid rgba(255, 255, 255, 0.437);
   width: 100%;

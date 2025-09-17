@@ -4,7 +4,7 @@
   height: 100vh;
   z-index: 2;
   position: relative;
-  font-size: clamp(1rem, 2vw, 1.3rem);
+  font-size: clamp(1.3rem, 1.5vw, 2rem);
   padding: 1rem;
 }
 
@@ -128,7 +128,7 @@ section:nth-of-type(1) .description {
   align-self: end;
   width: clamp(30vw, 35vw, 20rem);
   height: auto;
-  font-size: clamp(1rem, 2vw, 1.3rem);
+  font-size: clamp(1.3rem, 1.5vw, 2rem);
 
   flex: 0.8;
 }
@@ -176,7 +176,7 @@ section:nth-of-type(1) .description {
 
 .otherProjectsSection {
   position: relative;
-  height: 200vh;
+  height: 180vh;
 }
 
 .videoBackground{
