@@ -7,11 +7,13 @@ import App from './App.jsx'
 import './data/i18n.js'
 import './styles/root.css'
 import './styles/reset.css'
+import ErrorPage from './components/ErrorPage.jsx'
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,

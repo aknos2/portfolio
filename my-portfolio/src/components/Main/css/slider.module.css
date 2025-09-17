@@ -9,7 +9,7 @@
 aside h2 {
   color: white !important;
   text-align: end;
-  font-size: clamp(1rem, 5vw, 4rem);
+  font-size: clamp(1rem, 4.5vw, 4rem);
   transform: translateX(-1rem);
   margin-top: 6rem;
 }
