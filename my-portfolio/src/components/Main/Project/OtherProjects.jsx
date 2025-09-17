@@ -141,7 +141,7 @@ const ProjectsA = ({title, description, imgHigh, imgLow, languageIndex, url, git
               sizes="(max-width: 600px) 480px, 1080px"
               loading="lazy" // Add lazy loading for performance
               />
-          <div className={styles.languageLinkWrap}>
+          <div className={`${styles.languageLinkWrap} ${invertSide ? styles.invertLanguageLinkWrap : ''}`}>
             <div className={`${styles.links} ${invertSide ? styles.invertLinks : ""}`}>
               <WebsiteUrl link={url} />
               <GithubIcon link={github}/>
@@ -153,7 +153,7 @@ const ProjectsA = ({title, description, imgHigh, imgLow, languageIndex, url, git
               <ul className={styles.rightSideUl}>
                 {languageIndex.languages.map((language, idx) => (
                   <li key={idx}>
-                    {invertSide ? <span>- {language}</span> : <span>{language} -</span>}
+                    {invertSide ? <span>{language} -</span> : <span>- {language}</span>}
                   </li>
                 ))}
               </ul>

@@ -22,6 +22,7 @@
   flex: 0.9;
   position: relative;
   z-index: 2;
+
 }
 .imageWrap img {
   width: clamp(18rem, 40vw, 50rem);
@@ -117,6 +118,15 @@ section:nth-of-type(1) .description {
   flex-direction: column;
   justify-content: center;
   flex: 1;
+  width: clamp(18rem, 40vw, 50rem); /*same as image width*/
+  margin-left: auto;
+}
+section:nth-of-type(1) .languageLinkWrap{
+  width: clamp(18rem, 30vw, 50rem);
+}
+
+.invertLanguageLinkWrap {
+  margin: 0;
 }
 
 .languages h3 {
@@ -125,7 +135,7 @@ section:nth-of-type(1) .description {
 .languages {
   display: flex;
   flex-direction: column;
-  align-self: end;
+  align-self: start;
   width: clamp(30vw, 35vw, 20rem);
   height: auto;
   font-size: clamp(1.3rem, 1.5vw, 2rem);
@@ -133,12 +143,12 @@ section:nth-of-type(1) .description {
   flex: 0.8;
 }
 .languages.rightSideUl {
-  text-align: end;
+  text-align: start;
   margin-right: 1rem;
 }
 .languages.leftSideUl {
-  text-align: start;
-  align-self: start;
+  text-align: end;
+  align-self: end;
   margin-left: 1rem;
 }
 
@@ -147,15 +157,15 @@ section:nth-of-type(1) .description {
 }
 .links {
   display: flex;
-  justify-content: end;
+  justify-content: start;
   gap: 1.2rem;
   width: 100%;
   height: auto;
   margin-top: 1rem;
-  padding: 1rem;
+  padding: 1rem 0;
 }
 .invertLinks {
-  justify-content: start;
+  justify-content: end;
 }
 .link {
   display: flex;
