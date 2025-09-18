@@ -16,7 +16,9 @@ const resources = {
       "music_composing": "Music Composing",
       myDescription: {
         firstText: "Hello, I'm a front-end developer and designer",
-        secondText: "My focus is on building artistic, user-friendly, and efficient interfaces"
+        secondText: "My focus is on building artistic, user-friendly, and efficient interfaces",
+        secondTextMobile: "My focus is on building" ,
+        thirdTextMobile: "artistic, user-friendly, and efficient interfaces"
       }
     }
   },
@@ -31,8 +33,10 @@ const resources = {
       "video_editing": "動画編集ソフト",
       "music_composing": "作曲ソフト",
       myDescription: {
-        firstText: "Hello、フロントエンド開発者兼デザイナーです",
-        secondText: "直感的に使える、美しく効率的なインターフェースを作ることを目指しています"
+        firstText: "Hello, フロントエンド開発者兼デザイナーです",
+        secondText: "直感的に使える、美しく効率的なインターフェースを作ることを目指しています",
+        secondTextMobile: "直感的に使える、美しく効率的な",
+        thirdTextMobile: "インターフェースを作ることを目指しています"
       }
     }
   }

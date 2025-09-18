@@ -1,11 +1,11 @@
-import Header from '../Header/Header';
 import styles from './about.module.css';
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
-import { useRef } from 'react';
+import { useContext, useRef } from 'react';
 import { SplitText } from "gsap/SplitText";
 import profileImg from '../../assets/profile-image.JPG';
 import { useTranslation } from 'react-i18next';
+import MediaQueryContext from '../../Layouts/MediaQueryContext';
 
 const AboutNest = () => {
   const title = useRef();
@@ -34,6 +34,7 @@ function About() {
   const animTextRefs = useRef([]);
   const imgRef = useRef();
   const { t } = useTranslation();
+  const { isMobile } = useContext(MediaQueryContext);
 
   const addToRefs = (el) => {
     if (el && !animTextRefs.current.includes(el)) {
@@ -109,9 +110,6 @@ function About() {
 
           <div className={styles.skillCategory}>
             <h4 ref={addToRefs}>Other</h4>
-            <div className={styles.skill}>
-              <span ref={addToRefs}>{t('video_editing')} (Final Cut Pro)</span>
-            </div>
             <div className={`${styles.skill} ${styles.musicComposing}`}>
               <span ref={addToRefs}>{t('music_composing')} (Logic Pro)</span>
               <a href="https://www.youtube.com/@fireinthepool5590" target="_blank" rel="noopener noreferrer">
@@ -123,11 +121,19 @@ function About() {
                 </div>
               </a>
             </div>
+            <div className={styles.skill}>
+              <span ref={addToRefs}>{t('video_editing')} (Final Cut Pro)</span>
+            </div>
           </div>
+           {isMobile && (
+           <a ref={addToRefs} href="mailto:eltonryuji@gmail.com" className={styles.mobileEmail}>eltonryuji@gmail.com</a>
+           )}
         </div>
 
         <div className={styles.imgWrap} ref={imgRef}>
-          <a a href="mailto:eltonryuji@gmail.com">eltonryuji@gmail.com</a>
+          {!isMobile && (
+           <a a href="mailto:eltonryuji@gmail.com">eltonryuji@gmail.com</a>
+          )}
           <img src={profileImg} alt="me"/>
         </div>
       </div>

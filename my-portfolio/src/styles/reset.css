@@ -84,3 +84,28 @@ p, h1, h2, h3, a, ul {
   list-style: none;
   color: #222;
 }
+
+/* Mobile (default) */
+@media (max-width: 599px) {
+  /* Phones portrait */
+}
+
+/* Small tablets / large phones in landscape */
+@media (min-width: 600px) and (max-width: 767px) {
+  /* Large phones + mini tablets */
+}
+
+/* Tablets (iPad portrait fits here) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  /* iPads and standard tablets */
+}
+
+/* Small desktop / laptops */
+@media (min-width: 1025px) and (max-width: 1439px) {
+  /* laptops */
+}
+
+/* Large desktop / 2K+ monitors */
+@media (min-width: 1440px) {
+  /* widescreens */
+}

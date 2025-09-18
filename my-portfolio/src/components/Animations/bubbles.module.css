@@ -58,3 +58,12 @@
     opacity: 0;
   }
 }   
+
+@media (min-width: 2049px) {
+  .containerSmall {
+    left: 60%;
+    width: 50vw;
+    height: 100vh;
+    transform: translateX(-50%);
+  }
+}

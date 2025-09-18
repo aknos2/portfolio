@@ -2,6 +2,7 @@ import { Outlet } from 'react-router-dom'
 import Header from '../components/Header/Header.jsx'
 import { useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { MediaQueryProvider } from './MediaQueryContext.jsx';
 
 function Layout() {
   const location = useLocation();
@@ -26,14 +27,16 @@ function Layout() {
 
 
   return (
-    <div className="app-container"> {/* Add wrapper to maintain structure */}
-      <Header 
-        handleProjects={handleProjects} 
-      />
-      <main>
-       <Outlet />
-      </main>
-    </div>
+    <MediaQueryProvider> 
+      <div className="app-container"> {/* Add wrapper to maintain structure */}
+        <Header 
+          handleProjects={handleProjects} 
+        />
+        <main>
+        <Outlet />
+        </main>
+      </div>
+    </MediaQueryProvider>
   );
 }
 

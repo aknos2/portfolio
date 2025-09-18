@@ -104,6 +104,9 @@
     transform: translate(-55%, 0%);
     gap: 0.5rem
   }
+  .error-page h1 {
+    font-size: 2rem;
+  }
 }
 
 #smooth-wrapper {

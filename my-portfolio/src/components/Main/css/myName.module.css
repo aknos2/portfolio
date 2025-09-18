@@ -78,3 +78,62 @@
 .lastName {
   width: clamp(30rem, 73vw, 60rem);
 }
+
+@media (max-width:599px) {
+  .container {
+    margin: 0 2rem;
+  }
+  .profileFirstName h1, .profileLastName h1 {
+    font-size: clamp(2rem, 5vw, 7vw);
+  }
+  .profileTitle {
+    top: 0.5rem;
+    font-size: clamp(1.2rem, 3.1vw, 4rem);
+  }
+  .profileLanguage {
+    font-size: clamp(1rem, 2vw, 2.5rem);
+  }
+}
+
+/* Small tablets / large phones in landscape */
+@media (min-width: 600px) and (max-width: 767px) {
+  /* Large phones + mini tablets */
+}
+
+@media (min-width: 600px) and (max-width: 1024px) and (orientation: portrait) {
+  .profileFirstName h1, .profileLastName h1 {
+    font-size: clamp(3rem, 5vw, 7vw);
+  }
+  .profileTitle {
+    top: 0.5rem;
+    font-size: clamp(1.8rem, 3.1vw, 4rem);
+    right: -25%;
+  }
+  .profileLanguage {
+    font-size: clamp(1.4rem, 2vw, 2.5rem);
+    transform: translateX(40px); 
+  }
+}
+
+/* Small desktop / laptops */
+@media (min-width: 1025px) and (max-width: 1439px) {
+  /* laptops */
+}
+
+/* Large desktop / 2K+ monitors */
+@media (min-width: 2049px) {
+  .profileWrap {
+    margin: 0 auto;
+  }
+  .profileFirstName h1, .profileLastName h1 {
+    font-size: clamp(3rem, 5vw, 10rem);
+  }
+  .profileTitle {
+    top: 2.5rem;
+    font-size: clamp(1.8rem, 3.1vw, 5rem);
+    right: 0%;
+  }
+  .profileLanguage {
+    font-size: clamp(1.4rem, 2vw, 4rem);
+  }
+}

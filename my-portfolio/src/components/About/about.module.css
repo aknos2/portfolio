@@ -129,15 +129,33 @@
 
 @media (max-width: 764px) {
   .backgroundTitle h1{
-    position: absolute;
-    top: 0;
-    transform: translate(10rem, 5rem); /* further back */
-    filter: blur(1px);
-    font-size: clamp(5vw, 12vw, 15vw);
-    color: var(--description-color);
+    transform: translate(10rem, 5rem); 
+  }
+  .contentWrap h3 {
+    font-size: clamp(1.5rem, 3.5vw, 4rem);
   }
   .imgWrap {
     position: absolute;
     right: 0;
   }
+  .retangleDecoration {
+    width: clamp(35rem, 50vw, 45vw);
+    right: 0;
+    transform: translate(-10%, 0%);
+  }
+  .contentWrap {
+    padding: 0 1rem;
+    height: 82vh;
+  }
+  .mobileEmail {
+    color: var(--description-color);
+    font-size: clamp(1.1rem, 2vw, 2rem);
+    background-color: rgba(240, 248, 255, 0.129);
+    padding: 0.2rem;
+    border-radius: 7px;
+  }
+  .mobileEmail:hover{
+     color: red;
+  }
+
 }

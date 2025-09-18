@@ -45,17 +45,17 @@ function App() {
   }, [isProject]);
 
   return (
-    <div id="smooth-wrapper" ref={smoothWrapper}>
-      <div id="smooth-content" ref={smoothContent}>
-        <Main isProject={isProject} />
-            {isProject && (
-              <>
-              <OtherProjects/>
-              <Footer />
-              </>
-            )}
+      <div id="smooth-wrapper" ref={smoothWrapper}>
+        <div id="smooth-content" ref={smoothContent}>
+          <Main isProject={isProject} />
+              {isProject && (
+                <>
+                <OtherProjects/>
+                <Footer />
+                </>
+              )}
+        </div>
       </div>
-    </div>
   );
 }
 

@@ -85,7 +85,6 @@ nav ul li:hover::after {
   font-size: clamp(1rem, 2vw, 2rem);
 }
 
-
 @keyframes slide {
   from {
     opacity: 0;
@@ -94,5 +93,41 @@ nav ul li:hover::after {
   to {
     opacity: 1;
     transform: translateY(100%);
+  }
+}
+
+@media (max-width: 599px) {
+  .container ul {
+    gap: 1rem;
+    margin-right: 1rem;
+  }
+  .logo {
+    margin-left: 1rem;
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 1024px) and (orientation: portrait) {
+  nav {
+    font-size: clamp(1.5rem, 2vw, 4vw);
+  }
+}
+
+@media (min-width: 2049px) {
+  nav {
+    font-size: clamp(1.5rem, 2vw, 8rem);
+  }
+  .logo {
+    gap: 5rem;
+  }
+  .github svg {
+    width: clamp(1rem, 3vw, 5rem);
+  }
+  .languageWrap button {
+    font-size: clamp(1rem, 2vw, 5rem);
+  }
+  .container ul {
+    gap: 5rem;
+    margin-right: 5rem;
   }
 }
