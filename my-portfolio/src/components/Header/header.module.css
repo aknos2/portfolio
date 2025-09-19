@@ -96,6 +96,26 @@ nav ul li:hover::after {
   }
 }
 
+@media (max-width: 240px) {
+  nav {
+    font-size: clamp(0.7rem, 0.5vw, 2vw);
+    position: relative;
+    align-items: end;
+    margin-bottom: -1.5rem;
+  }
+  .languageWrap button {
+    font-size: clamp(0.6rem, 1vw, 5rem);
+  }
+  .container ul {
+    gap: 0rem;
+    margin-right: 0;
+  }
+  .logo {
+    margin-left: 0;
+    gap: 0;
+  }
+}
+
 @media (max-width: 599px) {
   .container ul {
     gap: 1rem;
