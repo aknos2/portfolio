@@ -18,7 +18,7 @@ const resources = {
         firstText: "Hello, I'm a front-end developer and designer",
         secondText: "My focus is on building artistic, user-friendly, and efficient interfaces",
         secondTextMobile: "My focus is on building" ,
-        thirdTextMobile: "artistic, user-friendly, and efficient interfaces"
+        thirdTextMobile: "Artistic, user-friendly, and efficient interfaces"
       }
     }
   },

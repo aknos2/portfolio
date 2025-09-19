@@ -17,7 +17,7 @@ function MyDescription() {
   const thirdTextRef = useRef(null); 
   const { t } = useTranslation();
 
-  const { isMobile, isTablet } = useContext(MediaQueryContext)
+  const { isMobileDescription, isTablet } = useContext(MediaQueryContext)
 
   const firstTextKey = "myDescription.firstText";
   const secondTextKey = "myDescription.secondText";
@@ -36,7 +36,7 @@ function MyDescription() {
     });
 
     let thirdSplit;
-    if ((isMobile || isTablet) && thirdTextRef.current) {
+    if ((isMobileDescription || isTablet) && thirdTextRef.current) {
       thirdSplit = new SplitText(thirdTextRef.current, {
         type: "chars",
         charsClass: styles.letter,
@@ -58,7 +58,7 @@ function MyDescription() {
     addSparkles(secondSplit.chars);
     if (thirdSplit) addSparkles(thirdSplit.chars);
 
-    const allChars = (isMobile || isTablet)
+    const allChars = (isMobileDescription || isTablet)
       ? [...firstSplit.chars, ...secondSplit.chars, ...(thirdSplit? thirdSplit.chars : [])]
       : [...firstSplit.chars, ...secondSplit.chars];
 
@@ -100,11 +100,12 @@ function MyDescription() {
   return (
     <div ref={containerRef} className={styles.container}>
       <SmallBubbles />
-      <span ref={firstTextRef} className={styles.typingEffect}>
+      <span ref={firstTextRef} className={`${styles.typingEffect} ${
+                  i18n.language === "ja" && isMobileDescription? styles.jpText : styles.enText }`}>
         {t(firstTextKey)}
       </span>
 
-      {!isMobile && !isTablet ? (
+      {!isMobileDescription && !isTablet ? (
         <span ref={secondTextRef} className={styles.typingEffect}>
           {t(secondTextKey)}
         </span>
@@ -117,7 +118,7 @@ function MyDescription() {
             {t(secondTextKeyMobile)}
           </span>
           <span ref={thirdTextRef} 
-                 className={`${styles.typingEffect} ${styles.mobileTypingEffect} ${
+                 className={`${styles.typingEffect} ${styles.mobileSecondLine} ${
                   i18n.language === "ja" ? styles.jpText : styles.enText }`}
                 >
             {t(thirdTextKeyMobile)}

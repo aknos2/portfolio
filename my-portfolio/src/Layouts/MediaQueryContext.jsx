@@ -5,10 +5,11 @@ const MediaQueryContext = createContext();
 
 function MediaQueryProvider({ children }) {
   const isMobile = useMediaQuery('(max-width: 599px)');
-  const isTablet = useMediaQuery('(min-width: 600px) and (max-width: 1024px)');
+  const isMobileDescription = useMediaQuery('(max-width: 567px)');
+  const isTablet = useMediaQuery('(min-width: 600px) and (max-width: 1023px) and (orientation: portrait)');
   
   return (
-    <MediaQueryContext.Provider value={{ isMobile, isTablet }}>
+    <MediaQueryContext.Provider value={{ isMobile, isTablet, isMobileDescription }}>
       {children}
     </MediaQueryContext.Provider>
   );
