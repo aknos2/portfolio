@@ -69,8 +69,16 @@ aside h2 {
   }
 }
 
-@media (max-width: 678px) {
+@media (max-width: 599px) {
   :root {
-    --slide-height: 110px;
+    --slide-height: 10rem;
+    --slide-width: 15rem;
+    --gap: 3px;
+  }
+  aside h2 {
+    font-size: clamp(2.5rem, 4.5vw, 4rem);
+  }
+  .slide {
+    border: 1px solid white;
   }
 }

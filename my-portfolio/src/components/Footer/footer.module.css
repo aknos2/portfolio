@@ -40,3 +40,12 @@ small {
   position: relative;
   z-index: 999;
 }
+
+@media (max-width: 599px) {
+  .lowerPart {
+    line-height: 35px;
+  }
+  .upperPart {
+    line-height: 25px;
+  }
+}

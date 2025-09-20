@@ -132,6 +132,9 @@ nav ul li:hover::after {
     margin-left: 1rem;
     gap: 1rem;
   }
+  .languageWrap button {
+    font-size: clamp(0.8rem, 2vw, 2rem);
+  }
 }
 
 @media (max-width: 240px) {

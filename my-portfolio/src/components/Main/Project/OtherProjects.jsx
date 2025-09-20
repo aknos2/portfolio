@@ -3,13 +3,14 @@ import { useGSAP } from "@gsap/react";
 import { ScrollSmoother, SplitText } from "gsap/all";
 import { ScrollTrigger } from "gsap/all";
 import gsap from "gsap";
-import { useEffect, useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { projects } from "../../../data/projects";
 import backgroundVideo from '../../../assets/underwater.mp4'
 import BubbleOverlay from "./BubbleOverlay";
 import Footer from "../../Footer/Footer";
 import { useTranslation } from "react-i18next";
 import Slider from "./Slider";
+import MediaQueryContext from "../../../Layouts/MediaQueryContext";
 
 gsap.registerPlugin(SplitText, ScrollTrigger, ScrollSmoother);
 
@@ -43,7 +44,9 @@ const ProjectsA = ({title, description, imgHigh, imgLow, languageIndex, url, git
   const imageRef = useRef();
   const titleBanner = useRef();
   const descriptionRef = useRef();
+  const builtWithRef = useRef();
   const { t } = useTranslation();
+  const {isMobile} = useContext(MediaQueryContext);
 
   useGSAP(() => {
     const textSplit = SplitText.create(textRef.current, {
@@ -96,6 +99,11 @@ const ProjectsA = ({title, description, imgHigh, imgLow, languageIndex, url, git
         duration: 0.8, 
         ease: "power2.out",
       })
+      .from(builtWithRef.current, {
+        opacity: 0,
+        x: -100,
+        ease:"power2.out"
+      })
       .to(titleBanner.current, {
         opacity: 1,
         duration: 0.6,
@@ -141,24 +149,52 @@ const ProjectsA = ({title, description, imgHigh, imgLow, languageIndex, url, git
               sizes="(max-width: 600px) 480px, 1080px"
               loading="lazy" // Add lazy loading for performance
               />
-          <div className={`${styles.languageLinkWrap} ${invertSide ? styles.invertLanguageLinkWrap : ''}`}>
-            <div className={`${styles.links} ${invertSide ? styles.invertLinks : ""}`}>
+          
+          {isMobile ? (
+            <>
+            <div className={`${styles.links}`}>
               <WebsiteUrl link={url} />
               <GithubIcon link={github}/>
             </div>
 
-            <div className={`${styles.languages} ${invertSide ? styles.leftSideUl : styles.rightSideUl}`} 
-                 ref={invertSide ? languagesRefLeft : languagesRefRight} data-speed="1">
-              <h3>{t('built_with')}</h3>
-              <ul className={styles.rightSideUl}>
-                {languageIndex.languages.map((language, idx) => (
-                  <li key={idx}>
-                    {invertSide ? <span>{language} -</span> : <span>- {language}</span>}
-                  </li>
-                ))}
-              </ul>
+            <div ref={builtWithRef}>
+              <div className={styles.languagesMobile} 
+                  ref={invertSide ? languagesRefLeft : languagesRefRight} data-speed="1">
+                <h3>{t('built_with')}</h3>
+                <ul className={styles.rightSideUl}>
+                  {languageIndex.languages.map((language, idx) => (
+                    <li key={idx}>
+                      {<span>- {language}</span>}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
-          </div>
+            </>
+            
+          ) : (
+            <div className={`${styles.languageLinkWrap} ${invertSide && !isMobile ? styles.invertLanguageLinkWrap : ''}`}>
+              <div className={`${styles.links} ${invertSide ? styles.invertLinks : ""}`}>
+                <WebsiteUrl link={url} />
+                <GithubIcon link={github}/>
+              </div>
+
+    
+              <div className={`${styles.languages} 
+                              ${invertSide ? styles.leftSideUl : styles.rightSideUl}`}
+                  ref={invertSide ? languagesRefLeft : languagesRefRight} data-speed="1">
+                <h3>{t('built_with')}</h3>
+                <ul className={styles.rightSideUl}>
+                  {languageIndex.languages.map((language, idx) => (
+                    <li key={idx}>
+                      {invertSide ? <span>{language} -</span> : <span>- {language}</span>}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              
+            </div>
+          )}
         </div>
 
         <div className={styles.description} data-speed="1.08">

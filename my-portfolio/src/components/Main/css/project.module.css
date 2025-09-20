@@ -4,7 +4,7 @@
 }
 
 .container {
-  width: clamp(22rem, 45vw, 58rem);
+  width: clamp(22rem, 45vw, 60rem);
   height: clamp(25rem 70vh 65rem);
   display: flex;
   flex-direction: column;
@@ -64,8 +64,8 @@
   top: 50%;
   background-color: transparent;
   border: none;
-  height: clamp(20px, 10vh, 70rem);
-  width: clamp(20px, 4vw, 3rem);
+  height: clamp(2rem, 10vh, 70rem);
+  width: clamp(2rem, 4vw, 3rem);
 }
 .previousArrow {
   left: 0;
@@ -84,8 +84,8 @@
 }
 
 .nextArrow svg, .previousArrow svg {
-  height: clamp(20px, 5vh, 7rem);
-  width: clamp(20px, 4vw, 3rem);
+  height: clamp(1rem, 5vh, 7rem);
+  width: clamp(1rem, 4vw, 3rem);
 }
 
 .imageWrap {
@@ -130,18 +130,18 @@
   cursor: pointer;
 }
 
-@media (max-width:764px) {
-  .thirdImage {
-    max-height: 25vh;
-  }
-}
-
 @media (min-width:1030px) {
   .newTab {
     top: 0;
     bottom: 100%;
     padding: 0.5rem 0;
     transform: translateY(-4rem);
+  }
+}
+
+@media (max-width:599px) {
+  .thirdImage {
+    max-height: 25vh;
   }
 }
 
