@@ -22,7 +22,6 @@
   flex: 0.9;
   position: relative;
   z-index: 2;
-
 }
 .imageWrap img {
   width: clamp(18rem, 40vw, 50rem);
@@ -52,7 +51,6 @@ section:nth-of-type(1) .imageWrap img {
 .description h3 {
   color: var(--otherProjectsDescription-color);
 }
-
 
 .description {
   display: flex;
@@ -142,7 +140,6 @@ section:nth-of-type(1) .languageLinkWrap{
   width: clamp(30vw, 35vw, 20rem);
   height: auto;
   font-size: clamp(1.3rem, 1.5vw, 2rem);
-
   flex: 0.8;
 }
 .languages.rightSideUl {
@@ -182,7 +179,7 @@ section:nth-of-type(1) .languageLinkWrap{
 }
 
 .newTab {
-  width: clamp(1.5rem, 3vw, 2rem);    
+  width: clamp(2rem, 3vw, 2.3rem);    
   fill: whitesmoke;
   transform: translateY(-10%);
 }
@@ -230,7 +227,25 @@ section:nth-of-type(1) .languageLinkWrap{
 }
 
 @media (min-width: 600px) and (max-width: 1024px) and (orientation: portrait) {
+}
 
+@media (max-width: 1024px) {
+  .description {
+    gap: 2rem;
+    padding: 2rem;
+    height: 100vh;
+  }
+  .container {
+    font-size: clamp(1.1rem, 1.5vw, 2rem);
+  }
+  .languages {
+    font-size: clamp(1.1rem, 1.5vw, 2rem);
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 6rem; /* space between projects */
+  }
 }
 
 @media (max-width: 599px) {
@@ -248,7 +263,7 @@ section:nth-of-type(1) .languageLinkWrap{
   .content {
     display: flex;
     flex-direction: column;
-    gap: 6rem; /* space between projects */
+    gap: 13rem; /* space between projects */
   }
   .container {
     flex-direction: column;
@@ -261,6 +276,7 @@ section:nth-of-type(1) .languageLinkWrap{
     flex: 1;
     height: auto;
     padding: 3rem 0;
+    width: 100%;
   }
   .imageWrap img {
     width: 100%;
@@ -345,5 +361,100 @@ section:nth-of-type(1) .languageLinkWrap{
   }
   .newTab {
     width: clamp(2rem, 3vw, 2rem);    
+  }
+}
+
+@media (max-width: 320px) {
+  .content {
+    gap: 20rem;
+  }
+  .descriptionContent {
+    min-width: 100%;
+    padding: 1rem 1rem;
+    margin-right: 2rem;
+  }
+  .titleDescriptionWrap {
+    margin-right: 2rem;
+  }
+}
+
+@media (max-width: 320px) and (max-height: 320px) {
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 10rem;
+  }
+  .section {
+    min-height: auto;   /* don’t force full viewport height */
+    height: auto;   
+  }
+
+  .container {
+    height: auto;    
+    min-height: 100%;   
+    font-size: 1rem;
+  }
+  .container h2 {
+    font-size: 1.3rem;
+  }
+
+  .languagesMobile {
+    padding-left: 0.5rem;
+    transform: translate(-1rem, 4rem);
+    font-size: 0.7rem;
+  }
+
+  .github {
+    width: 1.5rem;    
+    transform: translateY(-50%);
+  }
+
+  .newTab {
+    width: 1.5rem;    
+    transform: translateY(-40%);
+  }
+
+  .titleDescriptionWrap {
+    margin-left: -5rem;
+  }
+  .descriptionContent {
+    padding: 1rem 1rem;
+    margin-left: -5rem;
+  }
+}
+
+@media (max-width: 320px) and (max-height: 240px) {
+   .titleDescriptionWrap {
+    margin-left: 0rem;
+  }
+  .descriptionContent {
+    margin-left: 0;
+  }
+}
+
+
+@media (max-width: 320px) and (max-height: 220px) {
+
+  .container {
+    height: auto;    
+    min-height: 100%;   
+    font-size: 0.7rem;
+  }
+  .container h2 {
+    font-size: 1rem;
+  }
+  .titleDescriptionWrap {
+    margin-left: -9rem;
+    word-wrap: break-word;
+  }
+  .descriptionContent {
+    padding: 1rem 2rem;
+    margin-left: -8rem;
+    word-wrap: break-word;
+  }
+   .languagesMobile {
+    padding-left: 0.5rem;
+    transform: translate(-1rem, 7rem);
+    font-size: 0.5rem;
   }
 }

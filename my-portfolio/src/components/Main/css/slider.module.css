@@ -69,6 +69,14 @@ aside h2 {
   }
 }
 
+@media (max-width: 1024px) {
+  :root {
+    --slide-height: 10rem;
+    --slide-width: 15rem;
+    --gap: 3px;
+  }
+}
+
 @media (max-width: 599px) {
   :root {
     --slide-height: 10rem;
@@ -80,5 +88,27 @@ aside h2 {
   }
   .slide {
     border: 1px solid white;
+  }
+}
+
+@media (max-width: 320px) and (max-height: 320px) {
+  :root {
+    --slide-height: 7rem;
+    --slide-width: 12rem;
+    --gap: 1px;
+  }
+  aside h2 {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 320px) and (max-height: 220px) {
+   :root {
+    --slide-height: 5rem;
+    --slide-width: 10rem;
+  }
+  aside h2 {
+    margin-top: 4rem;
+    font-size: 1rem;
   }
 }
