@@ -134,16 +134,6 @@
   height: 35vh;
 }
 
-@media (min-width: 2049px) {
-  .container {
-    width: clamp(22rem, 50vw, 80rem);
-    height: clamp(25rem, 80vh, 90%);
-   
-    margin-top: 10rem;
-    font-size: clamp(3rem, 3vw, 4rem);
-  }
-}
-
 @media (min-width:1030px) {
   .newTab {
     top: 0;
@@ -152,9 +142,20 @@
     transform: translateY(-4rem);
   }
   .container {
-    font-size: clamp(1.3rem, 2vw, 4rem);
-    height: clamp(25rem, 70vh, 65rem);
+    font-size: clamp(1.3rem, 1.8vw, 4rem);
+    height: clamp(25rem, 72vh, 65rem);
     width: clamp(22rem, 45vw, 70rem);
+  }
+}
+
+
+@media (min-width: 2049px) {
+  .container {
+    width: clamp(22rem, 50vw, 80rem);
+    height: clamp(25rem, 80vh, 90%);
+   
+    margin-top: 10rem;
+    font-size: clamp(3rem, 3vw, 4rem);
   }
 }
 
@@ -176,6 +177,19 @@
 @media (max-width: 800px) {
   .container {
     font-size: clamp(1.1rem, 1.5vw, 2rem);
+  }
+}
+
+@media (max-width: 600px) and (max-height: 800px) and (orientation: portrait) {
+  .container {
+    height: clamp(25rem, 50vh, 65rem);
+  }
+}
+
+@media (max-width: 800px) and (max-height: 1080px) and (orientation: portrait) {
+  .container {
+    height: clamp(25rem, 45vh, 60rem);
+    width: clamp(22rem, 55vw, 70rem);
   }
 }
 
@@ -255,18 +269,6 @@
   }
 }
 
-@media (max-width: 600px) and (max-height: 800px) and (orientation: portrait) {
-  .container {
-    height: clamp(25rem, 50vh, 65rem);
-  }
-}
-
-@media (max-width: 800px) and (max-height: 1080px) and (orientation: portrait) {
-  .container {
-    height: clamp(25rem, 45vh, 60rem);
-    width: clamp(22rem, 55vw, 70rem);
-  }
-}
 
 @media (min-width: 800px) and (min-height: 1080px) and (orientation: portrait) {
   .container {
