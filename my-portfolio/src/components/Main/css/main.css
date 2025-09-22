@@ -127,6 +127,10 @@
     border-left: 3px solid  #ffffff;
     margin-bottom: 2rem;
   }
+  .error-page h1,
+  .error-page p {
+    font-size: 10rem;
+  }
 }
 
 @media (min-width: 800px) and (min-height: 1080px) and (orientation: portrait) {
@@ -154,7 +158,6 @@
     display: none;
   }
 }
-
 
 @media (min-width: 600px) and (max-height: 1024px) and (orientation: portrait) {
   .project-wrap {

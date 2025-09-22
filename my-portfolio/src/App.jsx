@@ -18,7 +18,7 @@ function App() {
   gsap.registerEffect({
     name: "skewOnScroll",
     effect: (targets, config) => {
-      const clamp = gsap.utils.clamp(-5, 5);
+      // const clamp = gsap.utils.clamp(-5, 5);
       // const skewSetter = gsap.quickSetter(targets, "skewY", "deg");
 
       ScrollSmoother.create({
