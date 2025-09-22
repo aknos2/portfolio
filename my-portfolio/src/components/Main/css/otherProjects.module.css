@@ -230,6 +230,7 @@ section:nth-of-type(1) .languageLinkWrap{
 @media (min-width: 600px) and (max-width: 1024px) and (orientation: portrait) {
 }
 
+
 @media (max-width: 1024px) {
   .description {
     gap: 2rem;
@@ -364,6 +365,7 @@ section:nth-of-type(1) .languageLinkWrap{
     width: clamp(2rem, 3vw, 2rem);    
   }
 }
+
 
 @media (max-width: 320px) {
   .content {
@@ -510,5 +512,70 @@ section:nth-of-type(1) .languageLinkWrap{
     fill: whitesmoke;
     transform: translateY(-10%);
     margin-right: 1rem;
+  }
+}
+
+@media (max-width: 800px) and (max-height: 1280px) and (orientation: portrait) {
+  .languageLinkWrap {
+    width: auto;
+  }
+  section:nth-of-type(1) .imageWrap img {
+    margin-top: 0 !important;
+  }
+
+  .description{
+    width: auto;
+  }
+
+  .imageWrap img{
+    margin-top: 5rem !important;
+  }
+}
+
+@media (max-width: 600px) and (max-height: 800px) and (orientation: portrait) {
+  .languagesMobile {
+    transform: translate(-2rem, 0rem);
+    font-size: 0.9rem;
+  }
+}
+
+@media (min-width: 800px) and (min-height: 1280px) and (orientation: portrait) {
+  .imageWrap img {
+    width: clamp(18rem, 50vw, 50rem);
+    padding: 0.5rem;
+    margin-top: 5rem !important;
+  }
+  section:nth-of-type(1) .imageWrap img {
+    width: clamp(18rem, 40vw, 45rem);
+    margin-top: 0 !important;
+    margin-right: 1rem !important;
+  }
+  .languageLinkWrap {
+    width: clamp(15rem, 45vw, 40rem);
+  }
+  .container {
+    font-size: clamp(1.5rem, 2vw, 3rem);
+  }
+  .languages {
+    font-size: clamp(1.5rem, 2vw, 3rem);
+  }
+  .github {
+    width: clamp(3rem, 3vw, 2rem);    
+  }
+
+  .newTab {
+    width: clamp(3rem, 3vw, 2.3rem);    
+  }
+  .content {
+    gap: 0;
+  }
+  section:nth-of-type(1) .languageLinkWrap {
+    margin-left: 3rem;
+  }
+  .invertLanguageLinkWrap {
+    margin-right: 1rem;
+  }
+  .languageLinkWrap {
+    margin-left: 1rem;
   }
 }
