@@ -13,6 +13,20 @@
   margin-top: auto;   
 }
 
+@media (min-width: 2049px) {
+  .container {
+    font-size: clamp(0.7rem, 2vw, 3.5rem);
+    width: clamp(15rem, 30vw, 45rem);
+    margin-right: 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    font-size: clamp(0.7rem, 1vw, 3rem);
+  }
+}
+
 @media (max-width:599px) {
   .container {
     width: 20rem;

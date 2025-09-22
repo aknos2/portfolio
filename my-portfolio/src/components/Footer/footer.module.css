@@ -62,3 +62,13 @@ small {
     margin-left: auto;
   }
 }
+
+@media (min-width: 2049px) {
+  .upperPart {
+    font-size: clamp(2rem, 5vw, 8rem);
+    line-height: 5rem;
+  }
+  .copyrightWrap {
+    font-size: clamp(0.6rem, 2vw, 4rem);
+  }
+}

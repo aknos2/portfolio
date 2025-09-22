@@ -109,6 +109,26 @@
   padding-top: clamp(10vh, 13vh, 15vh); /* Match fixed header height */
 }
 
+@media (min-width: 2049px) {
+  .scroll-down-message p{
+    font-size: clamp(1.2rem, 2vw, 5rem);
+    padding-top: 1rem;
+  }
+  .scroll-down-message {
+    display: flex;
+    height: 35vh;
+    gap: 2rem;
+  }
+  .scrolldown-left {
+    height: clamp(1rem, 2vw, 4rem);
+    width: clamp(1rem, 2vw, 4rem);
+    transform: rotate(-45deg);
+    border-bottom: 3px solid #ffffff;
+    border-left: 3px solid  #ffffff;
+    margin-bottom: 2rem;
+  }
+}
+
 
 @media (max-width:599px) {
   .project-wrap {
