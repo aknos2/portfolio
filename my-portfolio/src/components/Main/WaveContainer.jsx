@@ -14,7 +14,7 @@ const MyName = ({ slots }) => {
   const languageRef = useRef(null);
 
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} no-select`}>
       <div className={styles.profileWrap}>
         <div className={styles.profileFirstName} ref={slots.firstName}></div>
         <div className={styles.profileLastName} ref={slots.lastName}></div>
@@ -32,7 +32,7 @@ const MyName = ({ slots }) => {
 
 const SecondMyNameContainer = ({ slots }) => {
   return (
-    <div className={styles.secondContainer}>
+    <div className={`${styles.secondContainer} no-select`}>
       <div className={styles.firstName} ref={slots.firstName}></div>
       <div className={styles.lastName} ref={slots.lastName}></div>
     </div>

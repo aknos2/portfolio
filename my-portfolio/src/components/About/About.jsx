@@ -24,7 +24,7 @@ const AboutNest = () => {
   }, []); 
 
   return (
-    <div className={styles.backgroundTitle}>
+    <div className={`${styles.backgroundTitle} no-select`}>
       <h1 ref={title}>ABOUT</h1>
     </div>
   );
@@ -130,7 +130,7 @@ function About() {
            )}
         </div>
 
-        <div className={styles.imgWrap} ref={imgRef}>
+        <div className={`${styles.imgWrap} no-select`} ref={imgRef}>
           {!isMobile && (
            <a a href="mailto:eltonryuji@gmail.com">eltonryuji@gmail.com</a>
           )}

@@ -33,7 +33,7 @@ const ProjectNest = ({isProject, setCurrentProject, currentProject}) => {
 
   return (
         <>
-          <div className='project-background-title'><h1 ref={text}>PROJECTS</h1></div>
+          <div className='project-background-title no-select'><h1 ref={text}>PROJECTS</h1></div>
           <div className="project-wrap">
             <Languages/>
             <Project currentProject={currentProject} 
@@ -79,7 +79,7 @@ function Main({ isProject }) {
             setCurrentProject={setCurrentProject} 
             currentProject={currentProject} 
           />
-          <div className='scroll-down-message' ref={scrollDownMessRef}>
+          <div className='scroll-down-message no-select' ref={scrollDownMessRef}>
             <div className="scrolldown-left"></div>
             <p>other projects</p>
           </div>

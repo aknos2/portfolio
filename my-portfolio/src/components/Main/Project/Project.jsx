@@ -80,7 +80,7 @@ function Project({currentProject, setCurrentProject }) {
               <h2>{watchingProject.title}</h2>
             </div>
 
-            <div className={styles.imageWrap} ref={imageRef}>
+            <div className={`${styles.imageWrap} no-select`} ref={imageRef}>
               <img src={watchingProject.img.high} 
                   alt={watchingProject.title}
                   srcSet={`${watchingProject.img.low} 480w, ${watchingProject.img.high} 1080w`}

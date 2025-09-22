@@ -142,7 +142,7 @@ const ProjectsA = ({title, description, imgHigh, imgLow, languageIndex, url, git
   return (
     <section>
       <div className={`${styles.container} ${invertSide ? styles.invertSideContainer : ""}`} ref={containerRef}>
-        <div className={styles.imageWrap} ref={imageRef} data-speed="1">
+        <div className={`${styles.imageWrap} no-select`} ref={imageRef} data-speed="1">
           <img src={imgHigh} 
               className={`${invertSide ? styles.invertImg : ""} skew-image`}
               srcSet={`${imgLow} 480w, ${imgHigh} 1080w`}

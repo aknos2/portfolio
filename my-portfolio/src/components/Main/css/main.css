@@ -129,6 +129,26 @@
   }
 }
 
+@media (min-width: 600px) and (max-height: 1024px) and (orientation: portrait) {
+  .project-wrap {
+    top: 3%;
+    flex-direction: column-reverse;
+    justify-content: end;
+    transform: translate(-50%, 0%);
+    gap: 1.5rem
+  }
+}
+
+@media (min-width: 800px) and (min-height: 1080px) and (orientation: portrait) {
+  .project-wrap {
+    top: 15%;
+    flex-direction: column-reverse;
+    justify-content: end;
+    transform: translate(-50%, 0%);
+    gap: 1.5rem
+  }
+}
+
 
 @media (max-width:599px) {
   .project-wrap {

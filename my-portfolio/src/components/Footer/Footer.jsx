@@ -5,7 +5,7 @@ function Footer() {
   return (
     <footer>
       <div className={styles.container}>
-        <div className={styles.upperPart}>
+        <div className={`${styles.upperPart} no-select`}>
           <p>Contact <br/>me here</p>
         </div>
         <div className={styles.lowerPart}>
