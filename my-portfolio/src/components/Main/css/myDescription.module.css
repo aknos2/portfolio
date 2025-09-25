@@ -24,6 +24,7 @@
   display: inline-block;
   transition: opacity 1s ease-in-out, transform 1s ease;
   position: relative;
+  will-change: opacity, transform;
 }
 
 .letterVisible {
@@ -46,6 +47,7 @@
           drop-shadow(0 0 6px rgba(255, 255, 255, 0.6));
   
   filter: blur(10px);
+  will-change: opacity, transform;
 }
 
 .sparkle::before {

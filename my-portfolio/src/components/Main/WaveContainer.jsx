@@ -1,6 +1,6 @@
 import wave from './css/waveContainer.module.css';
 import styles from './css/myName.module.css'
-import waves from '../../assets/waves1.mp4';
+import waves from '../../assets/waves.mp4';
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { Flip } from "gsap/Flip";
@@ -127,6 +127,8 @@ function WaveContainer({ isProject }) {
         muted
         playsInline
         className={wave.videoBackground}
+        preload="auto" 
+        fetchpriority="high" 
       >
         <source src={waves} type="video/mp4" />
       </video>

@@ -9,6 +9,7 @@ import Footer from './components/Footer/Footer';
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
+
 function App() {
   const location = useLocation();
   const isProject = location.pathname === '/projects';

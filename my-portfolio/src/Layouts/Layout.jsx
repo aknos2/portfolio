@@ -1,8 +1,9 @@
 import { Outlet } from 'react-router-dom'
 import Header from '../components/Header/Header.jsx'
-import { useState } from 'react'
+import { useState, Suspense } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { MediaQueryProvider } from './MediaQueryContext.jsx';
+
 
 function Layout() {
   const location = useLocation();
@@ -32,9 +33,11 @@ function Layout() {
         <Header 
           handleProjects={handleProjects} 
         />
-        <main>
-        <Outlet />
-        </main>
+        <Suspense fallback={<h1>Loading...</h1>}>
+          <main>
+          <Outlet />
+          </main>
+        </Suspense>
       </div>
     </MediaQueryProvider>
   );
