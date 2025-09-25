@@ -1,5 +1,5 @@
 import { useContext, useRef } from "react";
-import styles from "./css/MyDescription.module.css";
+import styles from "./css/myDescription.module.css";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { SplitText } from "gsap/SplitText";
