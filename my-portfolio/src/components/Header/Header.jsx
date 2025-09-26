@@ -29,11 +29,13 @@ function Header({ handleProjects }) {
             </svg>
             <p className={styles.navLinks}>aknos2</p>
           </a>
+          <Link to="/">
             <div className={styles.languageWrap}>
                  <button onClick={handleLanguageSwitch}>
                     {i18n.language === 'ja' ? "english" : "日本語"}
                   </button>
             </div>
+          </Link>
         </div>
         <ul>
           <li>

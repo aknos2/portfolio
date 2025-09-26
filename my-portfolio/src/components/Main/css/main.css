@@ -17,9 +17,8 @@
   display: flex;
   justify-content: center;
   z-index: 10;
-  max-height: 100dvh;
-  overflow: auto; /* in case content exceeds */
 }
+
 
 .partial-space {
   display: inline-block;
@@ -168,6 +167,13 @@
     justify-content: end;
     transform: translate(-50%, 0%);
     gap: 1.5rem
+  }
+}
+
+@media (max-width:768px) {
+  .project-container {
+    max-height: 100dvh;
+    overflow: auto; /* in case content exceeds */
   }
 }
 

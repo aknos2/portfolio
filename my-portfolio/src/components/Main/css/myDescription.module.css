@@ -103,13 +103,6 @@
   }
 }
 
-@media (max-width: 640px) {
-  .container {
-    padding-bottom: env(safe-area-inset-bottom, 0);
-  }
-}
-
-
 @media (max-width: 599px) {
   .container {
     padding: 1rem;
