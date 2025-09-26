@@ -19,8 +19,9 @@ function Header({ handleProjects }) {
     i18n.changeLanguage(newLang);
 
     setTimeout(() => {
-      window.location.reload();
-    }, 0);
+      // Navigate to current route to refresh properly
+      window.location.href = window.location.pathname;
+    }, 100);
   } 
 
   return (

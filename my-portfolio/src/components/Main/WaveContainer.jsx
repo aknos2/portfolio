@@ -127,7 +127,13 @@ function WaveContainer({ isProject }) {
         muted
         playsInline
         className={wave.videoBackground}
-        preload="auto" 
+        preload="metadata" // Changed from "auto" to "metadata" for better iOS compatibility
+        fetchPriority="high"
+        // Additional iOS-specific attributes
+        webkit-playsinline="true"
+        x5-playsinline="true"
+        // Ensure video is truly muted for iOS
+        volume={0}
       >
         <source src={waves} type="video/mp4" />
       </video>
