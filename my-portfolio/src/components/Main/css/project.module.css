@@ -142,7 +142,7 @@
     transform: translateY(-4rem);
   }
   .container {
-    font-size: clamp(1.3rem, 1.8vw, 4rem);
+    font-size: clamp(1.3rem, 1.8vw, 2rem) !important;
     height: clamp(25rem, 72vh, 65rem);
     width: clamp(22rem, 45vw, 70rem);
   }
