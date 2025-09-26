@@ -76,7 +76,7 @@ const ProjectsA = ({title, description, imgHigh, imgLow, languageIndex, url, git
     gsap.set(invertSide ? titleRefLeft.current : titleRefRight.current, {
       x: invertSide ? -50 : 50
     });
-    gsap.set([textSplit.lines, descriptionSplit.lines], { y: 30 });
+    gsap.set([textSplit.lines, descriptionSplit.lines], { y: 20 });
     gsap.set(languageSplit.words, { y: 20 }); 
 
     const timeline = gsap.timeline({
