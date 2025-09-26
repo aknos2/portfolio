@@ -17,11 +17,6 @@ function Header({ handleProjects }) {
   const handleLanguageSwitch = () => {
     const newLang = i18n.language === 'en' ? 'ja' : 'en';
     i18n.changeLanguage(newLang);
-
-    setTimeout(() => {
-      // Navigate to current route to refresh properly
-      window.location.href = window.location.pathname;
-    }, 100);
   } 
 
   return (
