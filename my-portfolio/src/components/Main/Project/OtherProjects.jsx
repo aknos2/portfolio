@@ -99,7 +99,7 @@ const ProjectsA = ({title, description, imgHigh, imgLow, languageIndex, url, git
         duration: 0.8, 
         ease: "power2.out",
       })
-      .from(builtWithRef.current, {
+      .from(builtWithRef?.current, {
         opacity: 0,
         x: -100,
         ease:"power2.out"
