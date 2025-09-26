@@ -67,7 +67,7 @@ function Main({ isProject }) {
 
   return (
     <section>
-      <div className="project-container" style={{ position: "relative" }}>
+      <div className={`project-container ${!isProject ? "homepage" : ""}`} style={{ position: "relative" }}>
         <WaveContainer isProject={isProject}/>
         {!isProject ? (
           <MyDescription/>

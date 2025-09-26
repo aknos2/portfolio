@@ -103,7 +103,7 @@ function About() {
             <h4 ref={addToRefs}>Deployment & Tools</h4>
             <div className={styles.skill}>
               <span ref={addToRefs}>
-                Github, Vercel, Supabase, Render, Netlify
+                Github, Vercel, Supabase, Render, Netlify, Cloudflare
               </span>
             </div>
           </div>

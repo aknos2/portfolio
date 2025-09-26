@@ -33,19 +33,19 @@ export const slider = [
         id: "img2",
         high: weatherDayHigh,
         low: weatherDayLow,
-        url: "https://aknos2.github.io/weather-app/"
+        url: "https://github.com/aknos2/weather-app"
       },
       {
         id: "img3",
         high: weatherNightHigh,
         low: weatherNightLow,
-        url: "https://aknos2.github.io/weather-app/"
+        url: "https://github.com/aknos2/weather-app"
       },
        {
         id: "img4",
         high: signupFormHigh,
         low: signupFormLow,
-        url: "https://aknos2.github.io/sign-up-form/"
+        url: "https://github.com/aknos2/sign-up-form"
       },
        {
         id: "img5",
@@ -69,19 +69,19 @@ export const slider = [
         id: "img8",
         high: cvFormHigh,
         low: cvFormLow,
-        url: "https://aknos2-cv-application.netlify.app/"
+        url: "https://github.com/aknos2/cv-application"
       },
       {
         id: "img9",
         high: libraryHigh,
         low: libraryLow,
-        url: "https://aknos2.github.io/library/"
+        url: "https://github.com/aknos2/library"
       },
       {
         id: "img10",
         high: todoListHigh,
         low: todoListLow,
-        url: "https://aknos2.github.io/todolist/"
+        url: "https://github.com/aknos2/todolist"
       },
     
     ],

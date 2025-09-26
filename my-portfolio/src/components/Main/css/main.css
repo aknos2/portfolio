@@ -170,13 +170,6 @@
   }
 }
 
-@media (max-width:768px) {
-  .project-container {
-    max-height: 100dvh;
-    overflow: auto; /* in case content exceeds */
-  }
-}
-
 @media (max-width:599px) {
   .project-wrap {
     top: 3%;
@@ -194,6 +187,13 @@
   }
   .scroll-down-message {
     gap: 0.1rem;
+  }
+}
+
+@media (max-width:375px) {
+  .homepage {
+    max-height: 100svh;
+    overflow: auto; /* in case content exceeds */
   }
 }
 
