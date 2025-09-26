@@ -10,14 +10,6 @@ import ErrorPage from './components/ErrorPage.jsx'
 
 // Preload critical resources
 const preloadCriticalResources = () => {
-  // Preload critical video for LCP
-  const videoLink = document.createElement('link');
-  videoLink.rel = 'preload';
-  videoLink.href = '/src/assets/waves.mp4';
-  videoLink.as = 'video';
-  videoLink.type = 'video/mp4';
-  document.head.appendChild(videoLink);
-
   // Preload critical GSAP
   const gsapLink = document.createElement('link');
   gsapLink.rel = 'modulepreload';

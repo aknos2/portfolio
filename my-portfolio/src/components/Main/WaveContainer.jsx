@@ -128,7 +128,6 @@ function WaveContainer({ isProject }) {
         playsInline
         className={wave.videoBackground}
         preload="auto" 
-        fetchPriority="high" 
       >
         <source src={waves} type="video/mp4" />
       </video>
