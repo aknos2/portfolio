@@ -19,11 +19,6 @@ const preloadCriticalResources = () => {
 
 // Call preload function immediately
 preloadCriticalResources();
- 
-const projectComponentsLoader = () => Promise.all([
-  import("./components/Main/Project/OtherProjects.jsx"),
-  import("./components/Footer/Footer.jsx")
-])
 
 const router = createBrowserRouter([
   {
@@ -38,7 +33,6 @@ const router = createBrowserRouter([
       {
         path: "projects",
         element: <App />,
-        loader: projectComponentsLoader,
       },
       {
         path: "about",
