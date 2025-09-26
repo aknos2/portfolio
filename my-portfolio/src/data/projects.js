@@ -85,7 +85,7 @@ export const projects = [
     id: 2,
     title: "Memory Card Game",
     description: {
-      en: "Card game which you have to choose if the randomly generated cat photo alredy appeared or not.",
+      en: "Card game which you have to choose if the randomly generated cat photo already appeared or not.",
       ja: "ランダムに表示される猫の写真がすでに登場したものかどうかを判定するカードゲームです。"
     },
     languages: [
